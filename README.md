@@ -12,7 +12,7 @@
 
 ## Available Components
 - [Button](#button)
-- [Input]("#input")
+- [Input](#input)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
