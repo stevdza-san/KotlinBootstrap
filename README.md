@@ -14,7 +14,47 @@
 - [Button](#button)
 
 ## Usage
-Coming soon
+Update a Project level `build.gradle.kts` file:
+
+```gradle
+    repositories {
+        ..
+        maven(url = "https://jitpack.io")
+    }
+```
+
+Update a `site` module `build.gradle.kts` file:
+
+```gradle
+kobweb {
+    app {
+        index {
+            head.add {
+                script {
+                    src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+                }
+                link {
+                    rel = "stylesheet"
+                    href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+                }
+            }
+        }
+    }
+}
+
+kotlin {
+    @Suppress("UNUSED_VARIABLE") 
+    sourceSets {
+        ..
+        val jsMain by getting {
+            dependencies {
+                ..
+                implementation("com.github.stevdza-san:KotlinBootstrap:0.0.1")
+            }
+        }
+    }
+}
+```
 
 ## Button
 <p>
