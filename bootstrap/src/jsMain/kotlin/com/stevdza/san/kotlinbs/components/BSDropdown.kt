@@ -43,6 +43,7 @@ fun BSDropdown(
     onItemSelect: (Int, String) -> Unit
 ) {
     var selectedItem by remember { mutableStateOf(items.first()) }
+    var isSelected by remember { mutableStateOf(false) }
     Div(
         attrs = modifier
             .classNames(if (splitToggleButton) "btn-group" else "dropdown")
@@ -52,6 +53,25 @@ fun BSDropdown(
             )
             .toAttrs()
     ) {
+        if (splitToggleButton && direction == DropdownDirection.Left) {
+            Button(
+                attrs = Modifier
+                    .classNames(
+                        *style.classes.toTypedArray(),
+                        size.value,
+                        "dropdown-toggle",
+                        "dropdown-toggle-split"
+                    )
+                    .toAttrs {
+                        attr("type", "button")
+                        attr("data-bs-toggle", "dropdown")
+                    }
+            ) {
+                Span(attrs = Modifier.classNames("visually-hidden").toAttrs()) {
+                    Text(value = "Toggle Dropdown")
+                }
+            }
+        }
         Button(
             attrs = Modifier
                 .classNames(
@@ -64,12 +84,16 @@ fun BSDropdown(
                 )
                 .toAttrs {
                     attr("type", "button")
-                    attr("data-bs-toggle", "dropdown")
+                    if (!splitToggleButton) attr("data-bs-toggle", "dropdown")
                 }
         ) {
-            SpanText(placeholder ?: selectedItem)
+            SpanText(
+                if (placeholder != null) {
+                    if (isSelected) selectedItem else placeholder
+                } else selectedItem
+            )
         }
-        if (splitToggleButton) {
+        if (splitToggleButton && direction != DropdownDirection.Left) {
             Button(
                 attrs = Modifier
                     .classNames(
@@ -105,6 +129,7 @@ fun BSDropdown(
                             if (!isDisabled) {
                                 selectedItem = items[index]
                                 onItemSelect(index, items[index])
+                                isSelected = true
                             }
                         }
                         .cursor(if (isDisabled) Cursor.NotAllowed else Cursor.Pointer)
@@ -114,7 +139,7 @@ fun BSDropdown(
                         attrs = Modifier
                             .classNames("dropdown-item")
                             .thenIf(
-                                condition = selectedItem == items[index],
+                                condition = isSelected && selectedItem == items[index],
                                 other = Modifier.classNames("active")
                             )
                             .thenIf(
