@@ -12,6 +12,7 @@
 
 ## Available Components
 - [Button](#button)
+- [Input]("#input")
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -97,5 +98,96 @@ BSButton(
         text = "10"
     ),
     onClick = {}
+)
+```
+
+## Input
+<p>
+  <img src="/ASSETS/Inputs.gif" alt="Inputs Preview" width="360">
+</p> 
+
+<p>A simple usage with a placeholder:</p>
+
+```kotlin
+var inputValue by remember { mutableStateOf("") }
+BSInput(
+    value = inputValue,
+    placeholder = "Type here",
+    onValueChange = {
+        inputValue = it
+    }
+)
+```
+
+<p>Floating style input field, where a label is animated:</p>
+
+```kotlin
+BSInput(
+    value = inputValue,
+    label = "Email Address",
+    onValueChange = {
+        inputValue = it
+    },
+    floating = true
+)
+```
+
+<p>Positive validation style input field:</p>
+
+```kotlin
+BSInput(
+    value = inputValue,
+    label = "Email Address",
+    placeholder = "Type here",
+    onValueChange = {
+        inputValue = it
+    },
+    validation = InputValidation(
+      isValid = true
+    )
+)
+```
+
+<p>Negative validation style input field:</p>
+
+```kotlin
+BSInput(
+    value = inputValue,
+    label = "Email Address",
+    placeholder = "Type here",
+    onValueChange = {
+        inputValue = it
+    },
+    validation = InputValidation(
+      isInvalid = true
+    )
+)
+```
+
+<p>Disabled input field:</p>
+
+```kotlin
+BSInput(
+    value = inputValue,
+    label = "Email Address",
+    placeholder = "Type here",
+    onValueChange = {
+        inputValue = it
+    },
+    disabled = true
+)
+```
+
+<p>Plain text input field:</p>
+
+```kotlin
+BSInput(
+    value = inputValue,
+    label = "Email Address",
+    placeholder = "Type here",
+    plainText = true,
+    onValueChange = {
+        inputValue = it
+    }
 )
 ```
