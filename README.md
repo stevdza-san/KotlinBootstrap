@@ -1,53 +1,101 @@
-This is a [Kobweb](https://github.com/varabyte/kobweb) project bootstrapped with the `app/empty` template.
+<p align="center">
+  <a href="#">
+    <img src="/ASSETS/logo.svg" alt="Kotlin-Bootstrap logo" width="200" height="165">
+  </a>
+</p>
 
-This template is useful if you already know what you're doing and just want a clean slate. By default, it
-just creates a blank home page (which prints to the console so you can confirm it's working)
+<h3 align="center">Kotlin Bootstrap</h3>
+<p align="center">
+  ⚡Highly experimental library built on top of the <a href="https://github.com/varabyte/kobweb" target="_blank" rel="noopener noreferrer">Kobweb</a>(Compose HTML framework). It allows you to use the official <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer">Bootstrap</a> UI components with Kotlin and Jetpack Compose, to build a frontend. You are required to use the kobweb framework, otherwise it won't work.
+</p>
 
-If you are still learning, consider instantiating the `app` template (or one of the examples) to see actual,
-working projects.
 
-## Getting Started
+## Available Components
+- [Button](#button)
 
-First, run the development server by typing the following command in a terminal under the `site` folder:
+## Usage
+Update a Project level `build.gradle.kts` file:
 
-```bash
-$ cd site
-$ kobweb run
+```gradle
+    repositories {
+        ..
+        maven(url = "https://jitpack.io")
+    }
 ```
 
-Open [http://localhost:8080](http://localhost:8080) with your browser to see the result.
+Update a `site` module `build.gradle.kts` file:
 
-You can use any editor you want for the project, but we recommend using **IntelliJ IDEA Community Edition** downloaded
-using the [Toolbox App](https://www.jetbrains.com/toolbox-app/).
+```gradle
+kobweb {
+    app {
+        index {
+            head.add {
+                script {
+                    src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+                }
+                link {
+                    rel = "stylesheet"
+                    href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+                }
+            }
+        }
+    }
+}
 
-Press `Q` in the terminal to gracefully stop the server.
-
-### Live Reload
-
-Feel free to edit / add / delete new components, pages, and API endpoints! When you make any changes, the site will
-indicate the status of the build and automatically reload when ready.
-
-## Exporting the Project
-
-When you are ready to ship, you should shutdown the development server and then export the project using:
-
-```bash
-kobweb export
+kotlin {
+    @Suppress("UNUSED_VARIABLE") 
+    sourceSets {
+        ..
+        val jsMain by getting {
+            dependencies {
+                ..
+                implementation("com.github.stevdza-san:KotlinBootstrap:0.0.1")
+            }
+        }
+    }
+}
 ```
 
-When finished, you can run a Kobweb server in production mode:
+## Button
+<p>
+  <img src="/ASSETS/buttons.png" alt="Buttons Preview" width="812">
+</p> 
 
-```bash
-kobweb run --env prod
+<p>
+  <img src="/ASSETS/LoadingButton.gif?raw=true" width="268"/>
+  <img src="/ASSETS/LoadingButtonText.gif?raw=true" width="268"/>
+    <img src="/ASSETS/BadgeButton.gif?raw=true" width="268"/>
+</p>
+
+<p>A simple button usage:</p>
+
+```kotlin
+BSButton(
+    text = "Sign in",
+    onClick = {}
+)
 ```
 
-If you want to run this command in the Cloud provider of your choice, consider disabling interactive mode since nobody
-is sitting around watching the console in that case anyway. To do that, use:
+<p>You can update your button state to loading, as well as specify the exact Loading Text <em>(optional)</em>:</p>
 
-```bash
-kobweb run --env prod --notty
+```kotlin
+var buttonLoading by remember { mutableStateOf(false) }
+BSButton(
+    text = "Sign in",
+    loading = buttonLoading,
+    loadingText = "Please wait...",
+    onClick = { buttonLoading = true }
+)
 ```
 
-Kobweb also supports exporting to a static layout which is compatible with static hosting providers, such as GitHub
-Pages, Netlify, Firebase, any presumably all the others. You can read more about that approach here:
-https://bitspittle.dev/blog/2022/staticdeploy
+<p>Add a Badge to your button:</p>
+
+```kotlin
+BSButton(
+    text = "Shopping Cart",
+    badge = ButtonBadge(
+        text = "10"
+    ),
+    onClick = {}
+)
+```
