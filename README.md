@@ -58,7 +58,7 @@ kotlin {
 
 ## Button
 <p>
-  <img src="/ASSETS/buttons.png" alt="Buttons Preview" width="540">
+  <img src="/ASSETS/buttons.png" alt="Buttons Preview" width="812">
 </p> 
 
 <p>
