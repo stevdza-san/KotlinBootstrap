@@ -1,0 +1,6 @@
+jdk:
+  - openjdk11
+install:
+      - echo "Building only the bootstrap library"
+      - chmod +x gradlew
+      - ./gradlew :bootstrap:clean :bootstrap:publishToMavenLocal
