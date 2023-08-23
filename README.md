@@ -200,9 +200,7 @@ BSInput(
 BSDropdown(
     placeholder = "Select a Platform",
     items = listOf("Android", "iOS", "Web"),
-    onItemSelect = { index, value ->
-
-    }
+    onItemSelect = { index, value -> }
 )
 ```
 
@@ -212,9 +210,7 @@ BSDropdown(
 BSDropdown(
     items = listOf("Android", "iOS", "Web"),
     darkBackground = true,
-    onItemSelect = { index, value ->
-
-    }
+    onItemSelect = { index, value -> }
 )
 ```
 
@@ -224,8 +220,6 @@ BSDropdown(
 BSDropdown(
     items = listOf("Android", "iOS", "Web"),
     disabledItems = listOf("iOS"),
-    onItemSelect = { index, value ->
-
-    }
+    onItemSelect = { index, value -> }
 )
 ```
