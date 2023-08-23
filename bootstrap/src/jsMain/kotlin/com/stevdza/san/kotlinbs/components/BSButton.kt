@@ -32,7 +32,8 @@ import org.jetbrains.compose.web.dom.Text
  * @param size The overall size of the button.
  * @param disabled Whether a button is clickable or not.
  * @param loading When set to true, a loading indicator will appear. It's often used
- * with the other [loadingText] parameter.
+ * with the other [loadingText] parameter. When loading is equal to 'true' the [onClick]
+ * lambda is disabled.
  * @param loadingText Here you specify the text that will be shown, when the loading
  * state of the button changes to true.
  * @param badge Small badge or label, providing additional information or indicating
