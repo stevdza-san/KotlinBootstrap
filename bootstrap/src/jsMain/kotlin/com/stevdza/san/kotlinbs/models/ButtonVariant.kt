@@ -1,6 +1,6 @@
 package com.stevdza.san.kotlinbs.models
 
-enum class ButtonStyle(val classes: List<String>) {
+enum class ButtonVariant(val classes: List<String>) {
     Primary(classes = listOf("btn", "btn-primary")),
     PrimaryOutline(classes = listOf("btn", "btn-outline-primary")),
     Secondary(classes = listOf("btn", "btn-secondary")),

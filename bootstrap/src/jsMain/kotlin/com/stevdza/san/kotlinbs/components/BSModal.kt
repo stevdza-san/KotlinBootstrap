@@ -1,7 +1,7 @@
 package com.stevdza.san.kotlinbs.components
 
 import androidx.compose.runtime.Composable
-import com.stevdza.san.kotlinbs.models.ButtonStyle
+import com.stevdza.san.kotlinbs.models.ButtonVariant
 import com.stevdza.san.kotlinbs.models.ModalSize
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.attrsModifier
@@ -108,7 +108,7 @@ fun BSModal(
                             attr("data-bs-dismiss", "modal")
                         },
                         text = negativeButtonText,
-                        style = ButtonStyle.Secondary,
+                        variant = ButtonVariant.Secondary,
                         onClick = { onNegativeButtonClick() }
                     )
                     BSButton(
@@ -116,7 +116,7 @@ fun BSModal(
                             attr("data-bs-dismiss", "modal")
                         },
                         text = positiveButtonText,
-                        style = ButtonStyle.Primary,
+                        variant = ButtonVariant.Primary,
                         onClick = { onPositiveButtonClick() }
                     )
                 }

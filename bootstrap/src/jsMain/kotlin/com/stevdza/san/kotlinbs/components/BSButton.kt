@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import com.stevdza.san.kotlinbs.models.ButtonBadge
 import com.stevdza.san.kotlinbs.models.ButtonSize
-import com.stevdza.san.kotlinbs.models.ButtonStyle
 import com.stevdza.san.kotlinbs.models.ButtonType
+import com.stevdza.san.kotlinbs.models.ButtonVariant
 import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
@@ -27,7 +27,7 @@ import org.jetbrains.compose.web.dom.Text
  * to interact with and control the application or website.
  * @param id A unique identifier of the button.
  * @param text Text that will appear on top of the button.
- * @param style This one is used to stylize your button with a different color.
+ * @param variant This one is used to stylize your button with a different color.
  * @param type Determine the behavior of the button when clicked or activated.
  * @param size The overall size of the button.
  * @param disabled Whether a button is clickable or not.
@@ -44,7 +44,7 @@ fun BSButton(
     modifier: Modifier = Modifier,
     id: String? = null,
     text: String,
-    style: ButtonStyle = ButtonStyle.Primary,
+    variant: ButtonVariant = ButtonVariant.Primary,
     type: ButtonType = ButtonType.Button,
     size: ButtonSize = ButtonSize.Default,
     disabled: Boolean = false,
@@ -61,7 +61,7 @@ fun BSButton(
         .id(randomId)
         .onClick { onClick() }
         .classNames(
-            *style.classes.toTypedArray(),
+            *variant.classes.toTypedArray(),
             size.value,
             "d-flex",
             "align-items-center",

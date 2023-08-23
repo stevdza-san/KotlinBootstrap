@@ -2,7 +2,7 @@ package com.stevdza.san.kotlinbs.components
 
 import androidx.compose.runtime.*
 import com.stevdza.san.kotlinbs.models.ButtonSize
-import com.stevdza.san.kotlinbs.models.ButtonStyle
+import com.stevdza.san.kotlinbs.models.ButtonVariant
 import com.stevdza.san.kotlinbs.models.DropdownDirection
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -35,7 +35,7 @@ fun BSDropdown(
     items: List<String>,
     placeholder: String? = null,
     disabledItems: List<String>? = null,
-    style: ButtonStyle = ButtonStyle.Primary,
+    style: ButtonVariant = ButtonVariant.Primary,
     size: ButtonSize = ButtonSize.Default,
     direction: DropdownDirection = DropdownDirection.Bottom,
     splitToggleButton: Boolean = false,

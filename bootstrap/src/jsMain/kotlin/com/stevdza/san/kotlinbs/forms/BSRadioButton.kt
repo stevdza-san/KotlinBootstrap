@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
-import com.stevdza.san.kotlinbs.models.ButtonStyle
+import com.stevdza.san.kotlinbs.models.ButtonVariant
 import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
@@ -109,7 +109,7 @@ fun BSRadioGroupScope.BSRadioButton(
  *  @param inline Whether this group should be inlined, instead of placed within a column.
  *  @param reverse Whether to reverse the order of the radio button and a label.
  *  @param toggleButton Whether to change the style of the radio buttons to toggle buttons.
- *  @param toggleButtonStyle The style of the toggle button.
+ *  @param toggleButtonVariant The style of the toggle button.
  *  @param content Here, inside the lambda we can call one or multiple [BSRadioButton]'s.
  * */
 @Composable
@@ -120,7 +120,7 @@ fun BSRadioButtonGroup(
     inline: Boolean = false,
     reverse: Boolean = false,
     toggleButton: Boolean = false,
-    toggleButtonStyle: ButtonStyle = ButtonStyle.PrimaryOutline,
+    toggleButtonVariant: ButtonVariant = ButtonVariant.PrimaryOutline,
     content: @Composable BSRadioGroupScope.() -> Unit
 ) {
     val radioGroupName = remember { name ?: radioGroupScopeImpl.generateNextRadioGroupName() }
@@ -131,7 +131,7 @@ fun BSRadioButtonGroup(
         radioGroupScopeImpl.inlineCompositionLocal provides inline,
         radioGroupScopeImpl.reverseCompositionLocal provides reverse,
         radioGroupScopeImpl.toggleButtonCompositionLocal provides toggleButton,
-        radioGroupScopeImpl.toggleButtonStyleCompositionLocal provides toggleButtonStyle.classes,
+        radioGroupScopeImpl.toggleButtonStyleCompositionLocal provides toggleButtonVariant.classes,
         content = {
             Div(attrs = modifier.toAttrs()) {
                 content(radioGroupScopeImpl)

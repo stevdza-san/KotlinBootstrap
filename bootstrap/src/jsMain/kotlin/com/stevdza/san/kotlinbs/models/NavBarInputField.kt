@@ -10,7 +10,7 @@ data class NavBarInputField(
 
 data class NavBarButton(
     val text: String,
-    val style: ButtonStyle = ButtonStyle.LightOutline,
+    val variant: ButtonVariant = ButtonVariant.LightOutline,
     val type: ButtonType = ButtonType.Submit,
     val onClick: () -> Unit
 )

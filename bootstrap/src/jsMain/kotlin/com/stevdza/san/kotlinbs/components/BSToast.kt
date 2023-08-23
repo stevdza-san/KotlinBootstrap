@@ -199,8 +199,8 @@ fun ToastGroupScope.BSToastBasic(
  * button.
  * @param style The style of the toast.
  * @param borderColor The color of the border.
- * @param positiveButtonStyle The style of the positive button.
- * @param negativeButtonStyle The style of the negative button.
+ * @param positiveButtonVariant The style of the positive button.
+ * @param negativeButtonVariant The style of the negative button.
  *
  * */
 @Composable
@@ -215,8 +215,8 @@ fun ToastGroupScope.BSToastAction(
     onNegativeButtonClick: () -> Unit,
     style: ToastStyle = ToastStyle.Link,
     borderColor: BorderColor? = null,
-    positiveButtonStyle: ButtonStyle = ButtonStyle.Primary,
-    negativeButtonStyle: ButtonStyle = ButtonStyle.Secondary,
+    positiveButtonVariant: ButtonVariant = ButtonVariant.Primary,
+    negativeButtonVariant: ButtonVariant = ButtonVariant.Secondary,
 ) {
     Div(
         attrs = modifier
@@ -248,7 +248,7 @@ fun ToastGroupScope.BSToastAction(
                 BSButton(
                     text = positiveButtonText,
                     size = ButtonSize.Small,
-                    style = positiveButtonStyle,
+                    variant = positiveButtonVariant,
                     onClick = onPositiveButtonClick
                 )
                 BSButton(
@@ -259,7 +259,7 @@ fun ToastGroupScope.BSToastAction(
                         },
                     text = negativeButtonText,
                     size = ButtonSize.Small,
-                    style = negativeButtonStyle,
+                    variant = negativeButtonVariant,
                     onClick = onNegativeButtonClick
                 )
             }

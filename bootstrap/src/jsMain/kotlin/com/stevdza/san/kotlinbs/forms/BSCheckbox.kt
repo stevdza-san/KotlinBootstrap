@@ -2,7 +2,7 @@ package com.stevdza.san.kotlinbs.forms
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import com.stevdza.san.kotlinbs.models.ButtonStyle
+import com.stevdza.san.kotlinbs.models.ButtonVariant
 import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
@@ -27,7 +27,7 @@ import org.w3c.dom.HTMLInputElement
  * @param defaultChecked Here you specify a default checked state of the checkbox.
  * @param reverse Whether you want to display the checkbox and the label in a reverse order.
  * @param toggleButton Whether you want to transform the checkbox into a toggle button.
- * @param toggleButtonStyle The style of the toggle button.
+ * @param toggleButtonVariant The style of the toggle button.
  * @param onClick Lambda that is triggered when a user clicks on a checkbox.
  * */
 @Composable
@@ -39,7 +39,7 @@ fun BSCheckbox(
     defaultChecked: Boolean = false,
     reverse: Boolean = false,
     toggleButton: Boolean = false,
-    toggleButtonStyle: ButtonStyle = ButtonStyle.PrimaryOutline,
+    toggleButtonVariant: ButtonVariant = ButtonVariant.PrimaryOutline,
     onClick: (Boolean) -> Unit
 ) {
     val randomId = remember {
@@ -78,7 +78,7 @@ fun BSCheckbox(
             attrs = Modifier
                 .thenIf(
                     condition = toggleButton,
-                    other = Modifier.classNames(*toggleButtonStyle.classes.toTypedArray())
+                    other = Modifier.classNames(*toggleButtonVariant.classes.toTypedArray())
                 )
                 .thenIf(
                     condition = !toggleButton,

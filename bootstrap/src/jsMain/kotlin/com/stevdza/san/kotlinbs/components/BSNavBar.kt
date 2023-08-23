@@ -212,7 +212,7 @@ fun BSNavBar(
                             BSButton(
                                 modifier = Modifier.margin(left = 8.px),
                                 text = inputField.button.text,
-                                style = inputField.button.style,
+                                variant = inputField.button.variant,
                                 type = inputField.button.type,
                                 onClick = inputField.button.onClick
                             )

@@ -3,7 +3,7 @@ package com.stevdza.san.kotlinbs.forms
 import androidx.compose.runtime.*
 import com.stevdza.san.kotlinbs.components.BSButton
 import com.stevdza.san.kotlinbs.models.ButtonSize
-import com.stevdza.san.kotlinbs.models.ButtonStyle
+import com.stevdza.san.kotlinbs.models.ButtonVariant
 import com.stevdza.san.kotlinbs.models.InputSize
 import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.css.Overflow
@@ -105,7 +105,7 @@ fun BSFileInput(
                     .margin(all = 0.px)
                     .borderRadius(topRight = 0.px, bottomRight = 0.px),
                 text = "Browse...",
-                style = ButtonStyle.Light,
+                variant = ButtonVariant.Light,
                 size = when (size) {
                     InputSize.Default -> {
                         ButtonSize.Default
