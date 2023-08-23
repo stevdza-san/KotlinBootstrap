@@ -1,10 +1,12 @@
 package com.stevdza.san.kotlinbs.components
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import com.stevdza.san.kotlinbs.models.ButtonBadge
 import com.stevdza.san.kotlinbs.models.ButtonSize
 import com.stevdza.san.kotlinbs.models.ButtonStyle
 import com.stevdza.san.kotlinbs.models.ButtonType
+import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
 import com.varabyte.kobweb.compose.ui.modifiers.id
@@ -51,18 +53,18 @@ fun BSButton(
     badge: ButtonBadge? = null,
     onClick: () -> Unit
 ) {
+    val randomId = remember {
+        id ?: UniqueIdGenerator.generateUniqueId("button")
+    }
     Button(attrs = Modifier
         .then(modifier)
+        .id(randomId)
         .onClick { onClick() }
         .classNames(
             *style.classes.toTypedArray(),
             size.value,
             "d-flex",
             "align-items-center",
-        )
-        .thenIf(
-            condition = !id.isNullOrEmpty(),
-            other = id?.let { Modifier.id(it) } ?: Modifier
         )
         .thenIf(
             condition = badge != null,

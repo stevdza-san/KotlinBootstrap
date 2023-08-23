@@ -1,7 +1,6 @@
 package com.stevdza.san.kotlinbs.models
 
 data class NavBarInputField(
-    val id: String,
     val placeholder: String,
     val value: String,
     val onValueChange: (String) -> Unit,
@@ -10,7 +9,6 @@ data class NavBarInputField(
 )
 
 data class NavBarButton(
-    val id: String,
     val text: String,
     val style: ButtonStyle = ButtonStyle.LightOutline,
     val type: ButtonType = ButtonType.Submit,

@@ -203,7 +203,6 @@ fun BSNavBar(
                             }
                     ) {
                         BSInput(
-                            id = inputField.id,
                             placeholder = inputField.placeholder,
                             value = inputField.value,
                             onValueChange = inputField.onValueChange,
@@ -212,7 +211,6 @@ fun BSNavBar(
                         if (inputField.button != null) {
                             BSButton(
                                 modifier = Modifier.margin(left = 8.px),
-                                id = inputField.button.id,
                                 text = inputField.button.text,
                                 style = inputField.button.style,
                                 type = inputField.button.type,

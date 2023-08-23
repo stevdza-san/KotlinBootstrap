@@ -5,6 +5,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import com.stevdza.san.kotlinbs.models.ButtonStyle
+import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
 import com.varabyte.kobweb.compose.ui.modifiers.id
@@ -32,7 +33,7 @@ private val radioGroupScopeImpl = BSRadioGroupScope()
 @Composable
 fun BSRadioGroupScope.BSRadioButton(
     modifier: Modifier = Modifier,
-    id: String,
+    id: String? = null,
     label: String,
     disabled: Boolean = false,
     onClick: () -> Unit
@@ -43,7 +44,9 @@ fun BSRadioGroupScope.BSRadioButton(
     val reverse = getCompositionLocalReverseValue()
     val toggleButton = getCompositionLocalToggleButton()
     val toggleButtonStyle = getCompositionLocalToggleButtonStyle()
-
+    val randomId = remember {
+        id ?: UniqueIdGenerator.generateUniqueId("radiobutton")
+    }
     Div(
         attrs = modifier
             .classNames("form-check")
@@ -59,7 +62,7 @@ fun BSRadioGroupScope.BSRadioButton(
     ) {
         Input(
             attrs = Modifier
-                .id(id)
+                .id(randomId)
                 .thenIf(
                     condition = toggleButton,
                     other = Modifier.classNames("btn-check")
@@ -88,7 +91,7 @@ fun BSRadioGroupScope.BSRadioButton(
                     other = Modifier.classNames("form-check-label")
                 )
                 .toAttrs(),
-            forId = id
+            forId = randomId
         ) {
             Text(value = label)
         }

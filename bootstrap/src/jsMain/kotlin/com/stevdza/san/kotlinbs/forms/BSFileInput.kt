@@ -5,6 +5,7 @@ import com.stevdza.san.kotlinbs.components.BSButton
 import com.stevdza.san.kotlinbs.models.ButtonSize
 import com.stevdza.san.kotlinbs.models.ButtonStyle
 import com.stevdza.san.kotlinbs.models.InputSize
+import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.TextOverflow
 import com.varabyte.kobweb.compose.file.loadDataUrlFromDisk
@@ -43,7 +44,7 @@ import org.jetbrains.compose.web.dom.Text
 @Composable
 fun BSFileInput(
     modifier: Modifier = Modifier,
-    id: String,
+    id: String? = null,
     label: String = "Choose a File",
     placeholder: String = "No file selected.",
     size: InputSize = InputSize.Default,
@@ -51,20 +52,23 @@ fun BSFileInput(
     accept: String = "image/png, image/jpeg",
     onFileSelected: (String, String) -> Unit
 ) {
+    val randomId = remember {
+        id ?: UniqueIdGenerator.generateUniqueId("fileinput")
+    }
     var placeholderText by remember { mutableStateOf(placeholder) }
     Div(attrs = modifier.toAttrs()) {
         Label(
             attrs = Modifier
                 .classNames("form-label")
                 .toAttrs(),
-            forId = id
+            forId = randomId
         )
         {
             Text(value = label)
         }
         Row(
             modifier = Modifier
-                .id(id)
+                .id(randomId)
                 .thenIf(
                     condition = disabled,
                     other = Modifier.backgroundColor(ColorSchemes.Gray._50)

@@ -1,6 +1,8 @@
 package com.stevdza.san.kotlinbs.forms
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
 import com.varabyte.kobweb.compose.ui.modifiers.id
@@ -30,7 +32,7 @@ import org.w3c.dom.HTMLInputElement
 @Composable
 fun BSRange(
     modifier: Modifier = Modifier,
-    id: String,
+    id: String? = null,
     label: String? = "Label",
     min: Int = 0,
     max: Int = 100,
@@ -38,18 +40,21 @@ fun BSRange(
     disabled: Boolean = false,
     onSelect: (Double) -> Unit
 ) {
+    val randomId = remember {
+        id ?: UniqueIdGenerator.generateUniqueId("range")
+    }
     Div(attrs = modifier.toAttrs()) {
         Label(
             attrs = Modifier
                 .classNames("form-label")
                 .toAttrs(),
-            forId = id
+            forId = randomId
         ) {
             label?.let { Text(value = it) }
         }
         Input(
             attrs = Modifier
-                .id(id)
+                .id(randomId)
                 .classNames("form-range")
                 .toAttrs {
                     if (disabled) disabled()
@@ -57,7 +62,7 @@ fun BSRange(
                     max(value = "$max")
                     step(value = step)
                     onClick {
-                        onSelect((document.getElementById(id) as HTMLInputElement).value.toDouble())
+                        onSelect((document.getElementById(randomId) as HTMLInputElement).value.toDouble())
                     }
                 },
             type = InputType.Range

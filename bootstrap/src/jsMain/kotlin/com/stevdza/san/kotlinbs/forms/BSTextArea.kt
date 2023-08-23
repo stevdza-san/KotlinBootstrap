@@ -1,8 +1,10 @@
 package com.stevdza.san.kotlinbs.forms
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import com.stevdza.san.kotlinbs.models.InputSize
 import com.stevdza.san.kotlinbs.models.InputValidation
+import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
 import com.varabyte.kobweb.compose.ui.modifiers.id
@@ -36,7 +38,7 @@ import org.jetbrains.compose.web.dom.TextArea
 @Composable
 fun BSTextArea(
     modifier: Modifier = Modifier,
-    id: String,
+    id: String? = null,
     label: String? = "Label",
     placeholder: String? = null,
     disabled: Boolean = false,
@@ -48,6 +50,9 @@ fun BSTextArea(
     value: String,
     onValueChange: (String) -> Unit
 ) {
+    val randomId = remember {
+        id ?: UniqueIdGenerator.generateUniqueId("textarea")
+    }
     Div(
         attrs = modifier
             .thenIf(
@@ -61,7 +66,7 @@ fun BSTextArea(
                 attrs = Modifier
                     .classNames("form-label")
                     .toAttrs(),
-                forId = id
+                forId = randomId
             )
             {
                 label?.let { Text(value = it) }
@@ -69,7 +74,7 @@ fun BSTextArea(
         }
         TextArea(
             attrs = modifier
-                .id(id)
+                .id(randomId)
                 .thenIf(
                     condition = size != InputSize.Default,
                     other = Modifier.classNames(size.value)
@@ -111,7 +116,7 @@ fun BSTextArea(
             }
         }
         if (floating) {
-            Label(forId = id) {
+            Label(forId = randomId) {
                 label?.let { Text(value = it) }
             }
         }

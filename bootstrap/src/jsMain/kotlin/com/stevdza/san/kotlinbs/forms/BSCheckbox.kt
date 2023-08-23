@@ -1,7 +1,9 @@
 package com.stevdza.san.kotlinbs.forms
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import com.stevdza.san.kotlinbs.models.ButtonStyle
+import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
 import com.varabyte.kobweb.compose.ui.modifiers.id
@@ -31,7 +33,7 @@ import org.w3c.dom.HTMLInputElement
 @Composable
 fun BSCheckbox(
     modifier: Modifier = Modifier,
-    id: String,
+    id: String? = null,
     label: String,
     disabled: Boolean = false,
     defaultChecked: Boolean = false,
@@ -40,6 +42,9 @@ fun BSCheckbox(
     toggleButtonStyle: ButtonStyle = ButtonStyle.PrimaryOutline,
     onClick: (Boolean) -> Unit
 ) {
+    val randomId = remember {
+        id ?: UniqueIdGenerator.generateUniqueId("checkbox")
+    }
     Div(
         attrs = modifier
             .classNames("form-check")
@@ -51,7 +56,7 @@ fun BSCheckbox(
     ) {
         Input(
             attrs = Modifier
-                .id(id)
+                .id(randomId)
                 .thenIf(
                     condition = toggleButton,
                     other = Modifier.classNames("btn-check")
@@ -64,7 +69,7 @@ fun BSCheckbox(
                     if (defaultChecked) defaultChecked()
                     if (disabled) disabled()
                     onClick {
-                        onClick((document.getElementById(id) as HTMLInputElement).checked)
+                        onClick((document.getElementById(randomId) as HTMLInputElement).checked)
                     }
                 },
             type = InputType.Checkbox
@@ -80,7 +85,7 @@ fun BSCheckbox(
                     other = Modifier.classNames("form-check-label")
                 )
                 .toAttrs(),
-            forId = id
+            forId = randomId
         ) {
             Text(value = label)
         }

@@ -1,6 +1,8 @@
 package com.stevdza.san.kotlinbs.forms
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
 import com.varabyte.kobweb.compose.ui.modifiers.id
@@ -27,12 +29,15 @@ import org.w3c.dom.HTMLInputElement
 @Composable
 fun BSSwitch(
     modifier: Modifier = Modifier,
-    id: String,
+    id: String? = null,
     label: String,
     defaultChecked: Boolean = false,
     disabled: Boolean = false,
     onClick: (Boolean) -> Unit
 ) {
+    val randomId = remember {
+        id ?: UniqueIdGenerator.generateUniqueId("switch")
+    }
     Div(
         attrs = modifier
             .classNames("form-check", "form-switch")
@@ -40,14 +45,14 @@ fun BSSwitch(
     ) {
         Input(
             attrs = Modifier
-                .id(id)
+                .id(randomId)
                 .classNames("form-check-input")
                 .toAttrs {
                     attr("role", "switch")
                     if (defaultChecked) defaultChecked()
                     if (disabled) disabled()
                     onClick {
-                        onClick((document.getElementById(id) as HTMLInputElement).checked)
+                        onClick((document.getElementById(randomId) as HTMLInputElement).checked)
                     }
                 },
             type = InputType.Checkbox
@@ -56,7 +61,7 @@ fun BSSwitch(
             attrs = Modifier
                 .classNames("form-check-label")
                 .toAttrs(),
-            forId = id
+            forId = randomId
         ) {
             Text(value = label)
         }

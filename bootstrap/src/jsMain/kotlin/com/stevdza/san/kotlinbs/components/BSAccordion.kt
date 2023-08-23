@@ -1,7 +1,9 @@
 package com.stevdza.san.kotlinbs.components
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import com.stevdza.san.kotlinbs.models.AccordionItem
+import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
 import com.varabyte.kobweb.compose.ui.modifiers.id
@@ -22,12 +24,15 @@ import org.jetbrains.compose.web.dom.H2
 @Composable
 fun BSAccordion(
     modifier: Modifier = Modifier,
-    id: String,
+    id: String? = null,
     items: List<AccordionItem>
 ) {
+    val randomId = remember {
+        id ?: UniqueIdGenerator.generateUniqueId("accordion")
+    }
     Div(
         attrs = modifier
-            .id(id)
+            .id(randomId)
             .classNames("accordion")
             .toAttrs()
     ) {
@@ -58,7 +63,7 @@ fun BSAccordion(
                         .classNames("accordion-collapse", "collapse")
                         .toAttrs {
                             attr("aria-labelledby", "header${accordionItem.body.hashCode()}")
-                            attr("data-bs-parent", id)
+                            attr("data-bs-parent", randomId)
                         }
                 ) {
                     Div(attrs = Modifier.classNames("accordion-body").toAttrs()) {

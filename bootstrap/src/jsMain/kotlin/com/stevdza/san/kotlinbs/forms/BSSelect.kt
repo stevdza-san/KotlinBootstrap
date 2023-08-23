@@ -1,8 +1,10 @@
 package com.stevdza.san.kotlinbs.forms
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import com.stevdza.san.kotlinbs.models.InputValidation
 import com.stevdza.san.kotlinbs.models.SelectSize
+import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.css.disabled
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
@@ -16,7 +18,7 @@ import org.jetbrains.compose.web.dom.*
 @Composable
 fun BSSelect(
     modifier: Modifier = Modifier,
-    id: String,
+    id: String? = null,
     items: List<String>,
     label: String? = "Label",
     placeholder: String? = null,
@@ -26,6 +28,9 @@ fun BSSelect(
     floating: Boolean = false,
     onItemSelected: (Int, String) -> Unit
 ) {
+    val randomId = remember {
+        id ?: UniqueIdGenerator.generateUniqueId("select")
+    }
     if (floating) {
         Div(
             attrs = modifier
@@ -33,7 +38,7 @@ fun BSSelect(
                 .toAttrs()
         ) {
             BSSelectInternal(
-                id = id,
+                id = randomId,
                 items = items,
                 placeholder = placeholder,
                 validation = validation,
@@ -43,7 +48,7 @@ fun BSSelect(
             )
             Label(
                 attrs = Modifier.classNames("form-label").toAttrs(),
-                forId = id
+                forId = randomId
             ) {
                 label?.let { Text(value = it) }
             }
@@ -51,13 +56,13 @@ fun BSSelect(
     } else {
         Label(
             attrs = Modifier.classNames("form-label").toAttrs(),
-            forId = id
+            forId = randomId
         ) {
             label?.let { Text(value = it) }
         }
         BSSelectInternal(
             modifier = modifier,
-            id = id,
+            id = randomId,
             items = items,
             placeholder = placeholder,
             validation = validation,

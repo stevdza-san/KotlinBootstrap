@@ -1,7 +1,9 @@
 package com.stevdza.san.kotlinbs.forms
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import com.stevdza.san.kotlinbs.models.InputSize
+import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
 import com.varabyte.kobweb.compose.ui.modifiers.id
@@ -28,26 +30,29 @@ import org.jetbrains.compose.web.dom.Text
 @Composable
 fun BSColorPicker(
     modifier: Modifier = Modifier,
-    id: String,
+    id: String? = null,
     label: String = "Color Picker",
     title: String = "Choose your color",
     size: InputSize = InputSize.Default,
     disabled: Boolean = false,
     onColorSelected: (String) -> Unit
 ) {
+    val randomId = remember {
+        id ?: UniqueIdGenerator.generateUniqueId("colorpicker")
+    }
     Div(attrs = modifier.toAttrs()) {
         Label(
             attrs = Modifier
                 .classNames("form-label")
                 .toAttrs(),
-            forId = id
+            forId = randomId
         )
         {
             Text(value = label)
         }
         Input(
             attrs = Modifier
-                .id(id)
+                .id(randomId)
                 .classNames("form-control-color", "form-control")
                 .thenIf(
                     condition = size != InputSize.Default,

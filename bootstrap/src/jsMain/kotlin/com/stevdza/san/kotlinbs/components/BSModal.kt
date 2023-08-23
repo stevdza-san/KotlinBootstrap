@@ -6,7 +6,6 @@ import com.stevdza.san.kotlinbs.models.ModalSize
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.attrsModifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
-import com.varabyte.kobweb.compose.ui.modifiers.id
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
 import org.jetbrains.compose.web.dom.Div
@@ -21,7 +20,6 @@ import org.jetbrains.compose.web.dom.Text
  * or confirm a choice.
  * This component comes with a [showModal] util function, that is used to trigger/show
  * this component.
- * @param id A unique identifier of a parent component.
  * @param title Modal title.
  * @param body Modal body.
  * @param negativeButtonText Text of the negative button.
@@ -35,7 +33,6 @@ import org.jetbrains.compose.web.dom.Text
 @Composable
 fun BSModal(
     modifier: Modifier = Modifier,
-    id: String,
     title: String,
     body: String,
     negativeButtonText: String = "Close",
@@ -47,7 +44,6 @@ fun BSModal(
     onPositiveButtonClick: () -> Unit,
 ) {
     Div(attrs = modifier
-        .id(id)
         .classNames("modal", "fade")
         .thenIf(
             condition = !closableOutside,

@@ -1,8 +1,10 @@
 package com.stevdza.san.kotlinbs.forms
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import com.stevdza.san.kotlinbs.models.InputSize
 import com.stevdza.san.kotlinbs.models.InputValidation
+import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
 import com.varabyte.kobweb.compose.ui.modifiers.id
@@ -40,7 +42,7 @@ import org.jetbrains.compose.web.dom.Text
 @Composable
 fun BSInput(
     modifier: Modifier = Modifier,
-    id: String,
+    id: String? = null,
     label: String? = null,
     placeholder: String? = null,
     type: InputType<String> = InputType.Text,
@@ -55,6 +57,9 @@ fun BSInput(
     onValueChange: (String) -> Unit,
     onEnterClick: (() -> Unit)? = null
 ) {
+    val randomId = remember {
+        id ?: UniqueIdGenerator.generateUniqueId("input")
+    }
     Div(
         attrs = modifier
             .thenIf(
@@ -68,7 +73,7 @@ fun BSInput(
                 attrs = Modifier
                     .classNames("form-label")
                     .toAttrs(),
-                forId = id
+                forId = randomId
             )
             {
                 Text(value = label)
@@ -76,7 +81,7 @@ fun BSInput(
         }
         Input(
             attrs = Modifier
-                .id(id)
+                .id(randomId)
                 .classNames(if (plainText) "form-control-plaintext" else "form-control")
                 .thenIf(
                     condition = validation.isValid,
@@ -131,7 +136,7 @@ fun BSInput(
                 attrs = Modifier
                     .classNames("form-label")
                     .toAttrs(),
-                forId = id
+                forId = randomId
             )
             {
                 Text(value = label)

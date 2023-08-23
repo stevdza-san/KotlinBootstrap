@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.attrsModifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
-import com.varabyte.kobweb.compose.ui.modifiers.id
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
 import org.jetbrains.compose.web.dom.Div
@@ -15,20 +14,17 @@ import org.jetbrains.compose.web.dom.Div
  * is collapsing. Instead, use the class as an independent wrapping element.
  * This component comes with a [showCollapse] util function, that is used to
  * trigger/show this component.
- * @param id A unique identifier for the collapsing parent.
  * @param horizontal Whether the content should appear/disappear horizontally.
  * @param content The content that you're trying to hide.
  * */
 @Composable
 fun BSCollapse(
     modifier: Modifier = Modifier,
-    id: String,
     horizontal: Boolean = false,
     content: @Composable () -> Unit
 ) {
     Div(
         attrs = modifier
-            .id(id)
             .classNames("collapse")
             .thenIf(
                 condition = horizontal,
