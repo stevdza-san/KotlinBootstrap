@@ -214,7 +214,7 @@ BSDropdown(
 )
 ```
 
-<p>Disabled Dropdown:</p>
+<p>Disabled Dropdown item:</p>
 
 ```kotlin
 BSDropdown(
