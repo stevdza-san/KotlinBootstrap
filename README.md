@@ -13,6 +13,7 @@
 ## Available Components
 - [Button](#button)
 - [Input](#input)
+- [Dropdown](#dropdown)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -179,5 +180,52 @@ BSInput(
     placeholder = "Type here",
     plainText = true,
     onValueChange = {}
+)
+```
+
+## Dropdown
+<p>
+  <img src="/ASSETS/dropdowns.png" alt="Dropdown Preview" width="812">
+</p> 
+
+<p>
+  <img src="/ASSETS/placeholderDropdown.gif?raw=true" width="268"/>
+  <img src="/ASSETS/darkBackgroundDropdown.gif?raw=true" width="268"/>
+    <img src="/ASSETS/disabledDropdown.gif?raw=true" width="268"/>
+</p>
+
+<p>Dropdown with a placeholder:</p>
+
+```kotlin
+BSDropdown(
+    placeholder = "Select a Platform",
+    items = listOf("Android", "iOS", "Web"),
+    onItemSelect = { index, value ->
+
+    }
+)
+```
+
+<p>Dropdown with a dark background:</p>
+
+```kotlin
+BSDropdown(
+    items = listOf("Android", "iOS", "Web"),
+    darkBackground = true,
+    onItemSelect = { index, value ->
+
+    }
+)
+```
+
+<p>Disabled Dropdown:</p>
+
+```kotlin
+BSDropdown(
+    items = listOf("Android", "iOS", "Web"),
+    disabledItems = listOf("iOS"),
+    onItemSelect = { index, value ->
+
+    }
 )
 ```
