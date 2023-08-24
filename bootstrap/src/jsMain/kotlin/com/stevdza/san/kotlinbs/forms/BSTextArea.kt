@@ -22,6 +22,7 @@ import org.jetbrains.compose.web.dom.TextArea
  * UI component used to capture multi-line text input from users. It provides a resizable
  * input field that allows users to enter and edit longer blocks of text.
  * @param id Unique identifier of the component
+ * @param value A default value that will be included inside the input.
  * @param label Label of the component,
  * @param placeholder Placeholder of the component.
  * @param disabled Whether this component is disabled or not.
@@ -31,7 +32,6 @@ import org.jetbrains.compose.web.dom.TextArea
  * @param size The size of the TextArea component.
  * @param validation Here you can customize the look of the input component, in two
  * different states: Success and Error.
- * @param value A default value that will be included inside the input.
  * @param onValueChange Lambda that will be triggered when a user types something
  * inside the component.
  * */
@@ -39,7 +39,8 @@ import org.jetbrains.compose.web.dom.TextArea
 fun BSTextArea(
     modifier: Modifier = Modifier,
     id: String? = null,
-    label: String? = "Label",
+    value: String,
+    label: String? = null,
     placeholder: String? = null,
     disabled: Boolean = false,
     readOnly: Boolean = false,
@@ -47,7 +48,6 @@ fun BSTextArea(
     required: Boolean = false,
     size: InputSize = InputSize.Default,
     validation: InputValidation = InputValidation(),
-    value: String,
     onValueChange: (String) -> Unit
 ) {
     val randomId = remember {
@@ -61,7 +61,7 @@ fun BSTextArea(
             )
             .toAttrs()
     ) {
-        if (!floating) {
+        if (!floating && label != null) {
             Label(
                 attrs = Modifier
                     .classNames("form-label")
@@ -69,7 +69,7 @@ fun BSTextArea(
                 forId = randomId
             )
             {
-                label?.let { Text(value = it) }
+                Text(value = label)
             }
         }
         TextArea(
@@ -115,9 +115,9 @@ fun BSTextArea(
                 Text(value = validation.invalidFeedback)
             }
         }
-        if (floating) {
+        if (floating && label != null) {
             Label(forId = randomId) {
-                label?.let { Text(value = it) }
+                Text(value = label)
             }
         }
     }

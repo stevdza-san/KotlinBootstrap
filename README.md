@@ -63,9 +63,9 @@ kotlin {
 </p> 
 
 <p>
-  <img src="/ASSETS/LoadingButton.gif?raw=true" width="268"/>
-  <img src="/ASSETS/LoadingButtonText.gif?raw=true" width="268"/>
-    <img src="/ASSETS/BadgeButton.gif?raw=true" width="268"/>
+  <img src="/ASSETS/loadingButton.gif?raw=true" width="268"/>
+  <img src="/ASSETS/loadingButtonText.gif?raw=true" width="268"/>
+    <img src="/ASSETS/badgeButton.gif?raw=true" width="268"/>
 </p>
 
 <p>A simple button usage:</p>
@@ -103,7 +103,7 @@ BSButton(
 
 ## Input
 <p>
-  <img src="/ASSETS/Inputs.gif" alt="Inputs Preview" width="360">
+  <img src="/ASSETS/inputs.gif" alt="Inputs Preview" width="360">
 </p> 
 
 <p>A simple usage with a placeholder:</p>
