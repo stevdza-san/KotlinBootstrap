@@ -6,13 +6,14 @@
 
 <h3 align="center">Kotlin Bootstrap</h3>
 <p align="center">
-  ⚡Highly experimental library built on top of the <a href="https://github.com/varabyte/kobweb" target="_blank" rel="noopener noreferrer">Kobweb</a>(Compose HTML framework). It allows you to use the official <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer">Bootstrap</a> UI components with Kotlin and Jetpack Compose, to build a frontend. You are required to use the kobweb framework, otherwise it won't work.
+  ⚡Highly experimental library built on top of the <a href="https://github.com/varabyte/kobweb" target="_blank" rel="noopener noreferrer">Kobweb</a>(Compose HTML framework). It allows you to use the official <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer">Bootstrap</a> UI components with Kotlin and Jetpack Compose, to build a frontend on the web. You are required to use the kobweb framework, otherwise it won't work.
 </p>
 
 
 ## Available Components
 - [Button](#button)
 - [Input](#input)
+- [Dropdown](#dropdown)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -179,5 +180,46 @@ BSInput(
     placeholder = "Type here",
     plainText = true,
     onValueChange = {}
+)
+```
+
+## Dropdown
+<p>
+  <img src="/ASSETS/dropdowns.png" alt="Dropdown Preview" width="812">
+</p> 
+
+<p>
+  <img src="/ASSETS/placeholderDropdown.gif?raw=true" width="268"/>
+  <img src="/ASSETS/darkBackgroundDropdown.gif?raw=true" width="268"/>
+    <img src="/ASSETS/disabledDropdown.gif?raw=true" width="268"/>
+</p>
+
+<p>Dropdown with a placeholder:</p>
+
+```kotlin
+BSDropdown(
+    placeholder = "Select a Platform",
+    items = listOf("Android", "iOS", "Web"),
+    onItemSelect = { index, value -> }
+)
+```
+
+<p>Dropdown with a dark background:</p>
+
+```kotlin
+BSDropdown(
+    items = listOf("Android", "iOS", "Web"),
+    darkBackground = true,
+    onItemSelect = { index, value -> }
+)
+```
+
+<p>Disabled Dropdown item:</p>
+
+```kotlin
+BSDropdown(
+    items = listOf("Android", "iOS", "Web"),
+    disabledItems = listOf("iOS"),
+    onItemSelect = { index, value -> }
 )
 ```
