@@ -18,6 +18,7 @@
 - [Checkbox](#checkbox)
 - [RadioButton](#radiobutton)
 - [Switch](#switch)
+- [Alert](#alert)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -349,5 +350,41 @@ BSSwitch(
     label = "Android",
     disabled = true,
     onClick = {}
+)
+```
+
+## Alert
+<p>
+  <img src="/ASSETS/alerts.gif?raw=true" alt="Alerts Preview" width="420">
+</p> 
+
+<p>Primary Style Alert with an Info icon and a bold text:</p>
+
+```kotlin
+BSAlert(
+    message = "Visit my YouTube Channel: Stevdza-San",
+    icon = AlertIcon.Info,
+    bold = "Stevdza-San"
+)
+```
+
+<p>Success Style Alert with a Checkmark icon and a link text:</p>
+
+```kotlin
+BSAlert(
+    message = "You have successfully purchased a book!",
+    alertLink = Pair("book", "https://google.com"),
+    icon = AlertIcon.Checkmark,
+    style = AlertStyle.Success
+)
+```
+
+<p>Dismissable Alert:</p>
+
+```kotlin
+BSAlert(
+    message = "Dismissable Alert.",
+    dismissible = true,
+    style = AlertStyle.Dark
 )
 ```
