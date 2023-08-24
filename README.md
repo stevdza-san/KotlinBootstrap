@@ -22,6 +22,7 @@
 - [Toast](#toast)
 - [Modal](#modal)
 - [Select](#select)
+- [Range](#range)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -521,5 +522,22 @@ BSSelect(
     placeholder = "Choose a Platform",
     floating = true,
     onItemSelected = { index, value -> }
+)
+```
+
+## Range
+<p>
+  <img src="/ASSETS/range.gif?raw=true" alt="Range Preview" width="450">
+</p> 
+
+<p>Range's basic usage:</p>
+
+```kotlin
+BSRange(
+    modifier = Modifier.width(300.px),
+    label = "Range (0-10)",
+    min = 0,
+    max = 10,
+    onSelect = {}
 )
 ```
