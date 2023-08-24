@@ -14,15 +14,16 @@
 - [Button](#button)
 - [Input](#input)
 - [Dropdown](#dropdown)
+- [TextArea](#textarea)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
 
 ```gradle
-    repositories {
-        ..
-        maven(url = "https://jitpack.io")
-    }
+repositories {
+    ..
+    maven(url = "https://jitpack.io")
+}
 ```
 
 Update a `site` module `build.gradle.kts` file:
@@ -221,5 +222,35 @@ BSDropdown(
     items = listOf("Android", "iOS", "Web"),
     disabledItems = listOf("iOS"),
     onItemSelect = { index, value -> }
+)
+```
+
+## TextArea
+<p>
+  <img src="/ASSETS/textarea.gif" alt="TextArea Preview" width="460">
+</p> 
+
+
+<p>Basic TextArea example with a label:</p>
+
+```kotlin
+var value by remember { mutableStateOf("") }
+BSTextArea(
+    value = value,
+    label = "Email Address",
+    placeholder = "Type here...",
+    onValueChange = { value = it }
+)
+```
+
+<p>Floating TextArea:</p>
+
+```kotlin
+var value by remember { mutableStateOf("") }
+BSTextArea(
+    value = value,
+    label = "Email Address",
+    floating = true,
+    onValueChange = { value = it }
 )
 ```
