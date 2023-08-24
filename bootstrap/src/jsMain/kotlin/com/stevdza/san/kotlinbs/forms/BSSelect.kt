@@ -20,7 +20,7 @@ fun BSSelect(
     modifier: Modifier = Modifier,
     id: String? = null,
     items: List<String>,
-    label: String? = "Label",
+    floatingLabel: String = "Select",
     placeholder: String? = null,
     size: SelectSize = SelectSize.Default,
     validation: InputValidation = InputValidation(),
@@ -47,29 +47,27 @@ fun BSSelect(
                 onItemSelected = onItemSelected
             )
             Label(
-                attrs = Modifier.classNames("form-label").toAttrs(),
+                attrs = Modifier
+                    .classNames("form-label")
+                    .toAttrs(),
                 forId = randomId
             ) {
-                label?.let { Text(value = it) }
+                Text(value = floatingLabel)
             }
         }
     } else {
-        Label(
-            attrs = Modifier.classNames("form-label").toAttrs(),
-            forId = randomId
-        ) {
-            label?.let { Text(value = it) }
+        Div {
+            BSSelectInternal(
+                modifier = modifier,
+                id = randomId,
+                items = items,
+                placeholder = placeholder,
+                validation = validation,
+                size = size,
+                disabled = disabled,
+                onItemSelected = onItemSelected
+            )
         }
-        BSSelectInternal(
-            modifier = modifier,
-            id = randomId,
-            items = items,
-            placeholder = placeholder,
-            validation = validation,
-            size = size,
-            disabled = disabled,
-            onItemSelected = onItemSelected
-        )
     }
 }
 
