@@ -23,6 +23,7 @@
 - [Modal](#modal)
 - [Select](#select)
 - [Range](#range)
+- [Progress](#progress)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -539,5 +540,35 @@ BSRange(
     min = 0,
     max = 10,
     onSelect = {}
+)
+```
+
+
+## Progress
+<p>
+  <img src="/ASSETS/progress.gif?raw=true" alt="Progress Preview" width="360">
+</p> 
+
+<p>Basic Progress component usage:</p>
+
+```kotlin
+BSProgress(percentage = 85.percent)
+```
+
+<p>Stripped style:</p>
+
+```kotlin
+BSProgress(
+  percentage = 85.percent,
+  striped = true
+)
+```
+
+<p>Animated Stripped style:</p>
+
+```kotlin
+BSProgress(
+  percentage = 85.percent,
+  stripedAnimated = true
 )
 ```
