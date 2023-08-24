@@ -30,6 +30,7 @@ fun BSProgress(
     label: String? = null,
     percentage: CSSSizeValue<CSSUnit.percent> = 50.percent,
     height: CSSNumeric = 20.px,
+    width: CSSNumeric = 300.px,
     style: BackgroundStyle = BackgroundStyle.Primary,
     striped: Boolean = false,
     stripedAnimated: Boolean = false
@@ -37,6 +38,7 @@ fun BSProgress(
     Div(
         attrs = modifier
             .height(height)
+            .width(width)
             .classNames("progress")
             .toAttrs()
     ) {
