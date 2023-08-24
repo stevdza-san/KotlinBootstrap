@@ -33,7 +33,7 @@ import org.w3c.dom.HTMLInputElement
 fun BSRange(
     modifier: Modifier = Modifier,
     id: String? = null,
-    label: String? = "Label",
+    label: String? = null,
     min: Int = 0,
     max: Int = 100,
     step: Double = 1.0,
@@ -44,13 +44,15 @@ fun BSRange(
         id ?: UniqueIdGenerator.generateUniqueId("range")
     }
     Div(attrs = modifier.toAttrs()) {
-        Label(
-            attrs = Modifier
-                .classNames("form-label")
-                .toAttrs(),
-            forId = randomId
-        ) {
-            label?.let { Text(value = it) }
+        if (label != null) {
+            Label(
+                attrs = Modifier
+                    .classNames("form-label")
+                    .toAttrs(),
+                forId = randomId
+            ) {
+                Text(value = label)
+            }
         }
         Input(
             attrs = Modifier
@@ -61,7 +63,7 @@ fun BSRange(
                     min(value = "$min")
                     max(value = "$max")
                     step(value = step)
-                    onClick {
+                    onChange {
                         onSelect((document.getElementById(randomId) as HTMLInputElement).value.toDouble())
                     }
                 },
