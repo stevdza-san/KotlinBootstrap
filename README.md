@@ -24,6 +24,7 @@
 - [Select](#select)
 - [Range](#range)
 - [Progress](#progress)
+- [Spinner](#spinner)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -543,7 +544,6 @@ BSRange(
 )
 ```
 
-
 ## Progress
 <p>
   <img src="/ASSETS/progress.gif?raw=true" alt="Progress Preview" width="360">
@@ -571,4 +571,22 @@ BSProgress(
   percentage = 85.percent,
   stripedAnimated = true
 )
+```
+
+
+## Spinner
+<p>
+  <img src="/ASSETS/spinner.gif?raw=true" alt="Spinner Preview" width="600">
+</p> 
+
+<p>Default Spinner style:</p>
+
+```kotlin
+BSSpinner(variant = SpinnerVariant.Default)
+```
+
+<p>Grow Spinner style:</p>
+
+```kotlin
+BSSpinner(variant = SpinnerVariant.DefaultGrow)
 ```
