@@ -395,7 +395,7 @@ BSAlert(
   <img src="/ASSETS/toast.gif?raw=true" alt="Taosts Preview">
 </p> 
 
-Even though a `Toast` component is not yet fully customizable, from this preview above you can see that there are different variations and styles that you can apply to it. Also for triggering a `Toast` component, you do need to call a special function `showToast(toastId)` and pass your toast id, in order to properly display it on the screen. Every `BSToast` components needs to be wrapped inside the `BSToastGroup` composable.
+Even though a Toast component is not yet fully customizable, from this preview above you can see that there are different variations and styles that you can apply to it. For triggering a Toast component, you do need to call a special function `showToast(toastId)` and pass your toast id, in order to properly display it on the screen. Every Toast components needs to be wrapped inside the `BSToastGroup` composable. Also there's a `ToastPlacement` parameter available on `BSToastGroup` that you can use to modify a toast placement.
 
 `BSToast` gets visible once you trigger a `showToast()` function:
 
