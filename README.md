@@ -16,6 +16,7 @@
 - [Dropdown](#dropdown)
 - [TextArea](#textarea)
 - [Checkbox](#checkbox)
+- [RadioButton](#radiobutton)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -288,4 +289,39 @@ BSCheckbox(
     toggleButton = true,
     onClick = {}
 )
+```
+
+## RadioButton
+<p>
+  <img src="/ASSETS/radiobuttons.gif?raw=true" alt="RadioButtons Preview">
+</p> 
+
+<p>Basic RadioButtonGroup usage:</p>
+
+```kotlin
+BSRadioButtonGroup {
+    BSRadioButton(label = "Android", onClick = {})
+    BSRadioButton(label = "iOS", onClick = {})
+    BSRadioButton(label = "Web", onClick = {})
+}
+```
+
+<p>RadioButtonGroup in a horizontal orientation:</p>
+
+```kotlin
+BSRadioButtonGroup(inline = true) {
+    BSRadioButton(label = "Android", onClick = {})
+    BSRadioButton(label = "iOS", onClick = {})
+    BSRadioButton(label = "Web", onClick = {})
+}
+```
+
+<p>ToggleButton style of a RadioButtonGroup:</p>
+
+```kotlin
+BSRadioButtonGroup(toggleButton = true) {
+    BSRadioButton(label = "Android", onClick = {})
+    BSRadioButton(label = "iOS", onClick = {})
+    BSRadioButton(label = "Web", onClick = {})
+}
 ```
