@@ -1,9 +1,10 @@
 package com.stevdza.san.kotlinbs.pages
 
 import androidx.compose.runtime.Composable
-import com.stevdza.san.kotlinbs.forms.BSCheckbox
+import com.stevdza.san.kotlinbs.forms.BSRadioButton
+import com.stevdza.san.kotlinbs.forms.BSRadioButtonGroup
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
-import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
@@ -14,41 +15,45 @@ import org.jetbrains.compose.web.css.px
 @Page
 @Composable
 fun HomePage() {
-    Column(
-        modifier = Modifier.fillMaxSize().margin(left = 250.px),
-        horizontalAlignment = Alignment.Start,
-        verticalArrangement = Arrangement.Center
+    Row(
+        modifier = Modifier.fillMaxSize().margin(top = 250.px),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.Top
     ) {
-        BSCheckbox(
-            modifier = Modifier.margin(bottom = 14.px),
-            label = "Kotlin",
-            onClick = {
-
-            }
-        )
-        BSCheckbox(
-            modifier = Modifier.margin(bottom = 14.px),
-            label = "Python",
-            disabled = true,
-            onClick = {
-
-            }
-        )
-        BSCheckbox(
-            modifier = Modifier.margin(bottom = 14.px),
-            label = "C++",
-            reverse = true,
-            onClick = {
-
-            }
-        )
-        BSCheckbox(
-            modifier = Modifier.margin(bottom = 14.px),
-            label = "PHP",
-            toggleButton = true,
-            onClick = {
-
-            }
-        )
+        BSRadioButtonGroup(
+            modifier = Modifier.margin(right = 60.px),
+            checkedValue = "Android"
+        ) {
+            BSRadioButton(label = "Android", onClick = {})
+            BSRadioButton(label = "iOS", disabled = true, onClick = {})
+            BSRadioButton(label = "Web", onClick = {})
+        }
+        BSRadioButtonGroup(
+            modifier = Modifier.margin(right = 60.px),
+            checkedValue = "Donation",
+            reverse = true
+        ) {
+            BSRadioButton(label = "$1 USD", onClick = {})
+            BSRadioButton(label = "$10 USD", onClick = {})
+            BSRadioButton(label = "$50 USD", onClick = {})
+        }
+        BSRadioButtonGroup(
+            modifier = Modifier.margin(right = 40.px),
+            checkedValue = "Kotlin",
+            inline = true
+        ) {
+            BSRadioButton(label = "Kotlin", onClick = {})
+            BSRadioButton(label = "C++", onClick = {})
+            BSRadioButton(label = "Python", onClick = {})
+        }
+        BSRadioButtonGroup(
+            checkedValue = "Kotlin",
+            inline = true,
+            toggleButton = true
+        ) {
+            BSRadioButton(label = "Kotlin", onClick = {})
+            BSRadioButton(label = "C++", onClick = {})
+            BSRadioButton(label = "Python", onClick = {})
+        }
     }
 }
