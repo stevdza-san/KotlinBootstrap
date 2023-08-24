@@ -116,7 +116,7 @@ fun BSRadioGroupScope.BSRadioButton(
 fun BSRadioButtonGroup(
     modifier: Modifier = Modifier,
     name: String? = null,
-    checkedValue: String?,
+    checkedValue: String? = null,
     inline: Boolean = false,
     reverse: Boolean = false,
     toggleButton: Boolean = false,
