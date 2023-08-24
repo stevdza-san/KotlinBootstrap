@@ -100,11 +100,13 @@ fun ToastGroupScope.BSToast(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Box(modifier = Modifier
-                    .size(16.px)
-                    .borderRadius(50.percent)
-                    .margin(right = 8.px)
-                    .classNames(indicatorStyle.value))
+                Box(
+                    modifier = Modifier
+                        .size(16.px)
+                        .borderRadius(50.percent)
+                        .margin(right = 8.px)
+                        .classNames(indicatorStyle.value)
+                )
                 SpanText(text = title)
             }
             BSCloseButton(
@@ -246,6 +248,10 @@ fun ToastGroupScope.BSToastAction(
                     )
             ) {
                 BSButton(
+                    modifier = Modifier
+                        .attrsModifier {
+                            attr("data-bs-dismiss", "toast")
+                        },
                     text = positiveButtonText,
                     size = ButtonSize.Small,
                     variant = positiveButtonVariant,
