@@ -15,6 +15,7 @@
 - [Input](#input)
 - [Dropdown](#dropdown)
 - [TextArea](#textarea)
+- [Checkbox](#checkbox)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
