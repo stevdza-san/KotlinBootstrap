@@ -1,6 +1,6 @@
 package com.stevdza.san.kotlinbs.pages
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import com.stevdza.san.kotlinbs.forms.BSCheckbox
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
