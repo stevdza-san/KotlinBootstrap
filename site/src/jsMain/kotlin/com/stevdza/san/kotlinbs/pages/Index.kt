@@ -1,75 +1,52 @@
 package com.stevdza.san.kotlinbs.pages
 
 import androidx.compose.runtime.Composable
-import com.stevdza.san.kotlinbs.components.BSProgress
-import com.stevdza.san.kotlinbs.models.BackgroundStyle
+import com.stevdza.san.kotlinbs.components.BSSpinner
+import com.stevdza.san.kotlinbs.models.SpinnerVariant
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.core.Page
-import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
 @Page
 @Composable
 fun HomePage() {
-    Column(
+    Row(
         modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        BSProgress(
-            modifier = Modifier.margin(bottom = 20.px),
-            percentage = 85.percent,
-        )
-        BSProgress(
-            modifier = Modifier.margin(bottom = 20.px),
-            percentage = 75.percent,
-            striped = true
-        )
-        BSProgress(
-            modifier = Modifier.margin(bottom = 20.px),
-            striped = true,
-            percentage = 65.percent,
-            stripedAnimated = true
-        )
-        BSProgress(
-            modifier = Modifier.margin(bottom = 20.px),
-            percentage = 55.percent,
-            style = BackgroundStyle.Secondary
-        )
-        BSProgress(
-            modifier = Modifier.margin(bottom = 20.px),
-            percentage = 60.percent,
-            style = BackgroundStyle.Success
-        )
-        BSProgress(
-            modifier = Modifier.margin(bottom = 20.px),
-            percentage = 65.percent,
-            style = BackgroundStyle.Danger
-        )
-        BSProgress(
-            modifier = Modifier.margin(bottom = 20.px),
-            percentage = 70.percent,
-            style = BackgroundStyle.Warning
-        )
-        BSProgress(
-            modifier = Modifier.margin(bottom = 20.px),
-            percentage = 75.percent,
-            style = BackgroundStyle.Dark
-        )
-        BSProgress(
-            modifier = Modifier.margin(bottom = 20.px),
-            percentage = 80.percent,
-            style = BackgroundStyle.Light
-        )
-        BSProgress(
-            modifier = Modifier.margin(bottom = 20.px),
-            percentage = 85.percent,
-            style = BackgroundStyle.Info
-        )
+        Column(modifier = Modifier.margin(right = 40.px)) {
+            BSSpinner(
+                modifier = Modifier.margin(bottom = 20.px),
+                variant = SpinnerVariant.Small
+            )
+            BSSpinner(
+                modifier = Modifier.margin(bottom = 20.px),
+                variant = SpinnerVariant.SmallGrow
+            )
+        }
+        Column(modifier = Modifier.margin(right = 40.px)) {
+            BSSpinner(modifier = Modifier.margin(bottom = 20.px))
+            BSSpinner(
+                modifier = Modifier.margin(bottom = 20.px),
+                variant = SpinnerVariant.DefaultGrow
+            )
+        }
+        Column {
+            BSSpinner(
+                modifier = Modifier.margin(bottom = 20.px),
+                variant = SpinnerVariant.Large
+            )
+            BSSpinner(
+                modifier = Modifier.margin(bottom = 20.px),
+                variant = SpinnerVariant.LargeGrow
+            )
+        }
     }
 }
