@@ -6,11 +6,11 @@ import com.stevdza.san.kotlinbs.models.ModalSize
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.attrsModifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
+import com.varabyte.kobweb.compose.ui.modifiers.id
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.H2
-import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Text
 
 /**
@@ -18,7 +18,7 @@ import org.jetbrains.compose.web.dom.Text
  * window that temporarily overlays the main content of a webpage. Modals are commonly used
  * to grab the user's attention and prompt them for an action, display additional information,
  * or confirm a choice.
- * This component comes with a [showModal] util function, that is used to trigger/show
+ * This component comes with a [showModalOnClick] util function, that is used to trigger/show
  * this component.
  * @param title Modal title.
  * @param body Modal body.
@@ -33,8 +33,9 @@ import org.jetbrains.compose.web.dom.Text
 @Composable
 fun BSModal(
     modifier: Modifier = Modifier,
+    id: String,
     title: String,
-    body: String,
+    body: @Composable () -> Unit,
     negativeButtonText: String = "Close",
     positiveButtonText: String = "Okay",
     closableOutside: Boolean = false,
@@ -44,6 +45,7 @@ fun BSModal(
     onPositiveButtonClick: () -> Unit,
 ) {
     Div(attrs = modifier
+        .id(id)
         .classNames("modal", "fade")
         .thenIf(
             condition = !closableOutside,
@@ -94,9 +96,7 @@ fun BSModal(
                         .classNames("modal-body")
                         .toAttrs()
                 ) {
-                    P {
-                        Text(value = body)
-                    }
+                    body()
                 }
                 Div(
                     attrs = Modifier
@@ -128,7 +128,7 @@ fun BSModal(
 /**
  * Util function which is used in a combination with [BSModal].
  * */
-fun Modifier.showModal(id: String): Modifier = attrsModifier {
+fun Modifier.showModalOnClick(id: String): Modifier = attrsModifier {
     attr("data-bs-toggle", "modal")
     attr("data-bs-target", "#$id")
 }
