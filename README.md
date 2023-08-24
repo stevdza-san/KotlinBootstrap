@@ -21,6 +21,7 @@
 - [Alert](#alert)
 - [Toast](#toast)
 - [Modal](#modal)
+- [Select](#select)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -497,3 +498,28 @@ BSButton(
 )
 ```
 
+## Select
+<p>
+  <img src="/ASSETS/select.gif?raw=true" alt="Select Preview" width="360">
+</p> 
+
+<p>Select component's basic usage:</p>
+
+```kotlin
+BSSelect(
+    items = listOf("Android", "iOS", "Web", "Desktop"),
+    placeholder = "Choose a Platform",
+    onItemSelected = { index, value -> }
+)
+```
+
+<p>Floating style of a Select component:</p>
+
+```kotlin
+BSSelect(
+    items = listOf("Android", "iOS", "Web", "Desktop"),
+    placeholder = "Choose a Platform",
+    floating = true,
+    onItemSelected = { index, value -> }
+)
+```
