@@ -227,7 +227,7 @@ BSDropdown(
 
 ## TextArea
 <p>
-  <img src="/ASSETS/textarea.gif" alt="TextArea Preview" width="460">
+  <img src="/ASSETS/textarea.gif?raw=true" alt="TextArea Preview" width="460">
 </p> 
 
 
@@ -252,5 +252,39 @@ BSTextArea(
     label = "Email Address",
     floating = true,
     onValueChange = { value = it }
+)
+```
+
+## Checkbox
+<p>
+  <img src="/ASSETS/checkboxes.gif?raw=true" alt="Checkboxes Preview" width="280">
+</p> 
+
+<p>Basic Checkbox usage:</p>
+
+```kotlin
+BSCheckbox(
+    label = "Kotlin",
+    onClick = {}
+)
+```
+
+<p>Reversed order checkbox:</p>
+
+```kotlin
+BSCheckbox(
+    label = "C++",
+    reverse = true,
+    onClick = {}
+)
+```
+
+<p>Toggle button style checkbox:</p>
+
+```kotlin
+BSCheckbox(
+    label = "Python",
+    toggleButton = true,
+    onClick = {}
 )
 ```
