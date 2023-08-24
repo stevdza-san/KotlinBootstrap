@@ -19,6 +19,7 @@
 - [RadioButton](#radiobutton)
 - [Switch](#switch)
 - [Alert](#alert)
+- [Toast](#toast)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -387,4 +388,64 @@ BSAlert(
     dismissible = true,
     style = AlertStyle.Dark
 )
+```
+
+## Toast
+<p>
+  <img src="/ASSETS/toast.gif?raw=true" alt="Taosts Preview">
+</p> 
+
+Even though a `Toast` component is not yet fully customizable, from this preview above you can see that there are different variations and styles that you can apply to it. Also for triggering a `Toast` component, you do need to call a special function `showToast(toastId)` and pass your toast id, in order to properly display it on the screen. Every `BSToast` components needs to be wrapped inside the `BSToastGroup` composable.
+
+`BSToast` gets visible once you trigger a `showToast()` function:
+
+```kotlin
+BSToastGroup {
+    BSToast(
+        id = "toast",
+        title = "Welcome",
+        body = "Browse our website for more interesting products!",
+        onCloseClick = {}
+    )
+}
+
+BSButton(
+    text = "Show Toast",
+    onClick = {
+        showToast("toast")
+    }
+)
+```
+
+`BSToastBasic` which is not automatically dismissable, because it has `autoHide` parameter equal to false:
+
+```kotlin
+BSToastGroup {
+    BSToastBasic(
+        id = "toastBasic",
+        text = "Thank you for your feedback!",
+        style = ToastStyle.Dark,
+        autoHide = false,
+        closeButtonDark = false,
+        onCloseClick = {}
+    )
+}
+```
+
+`BSToastAction` which contains additional positive/negative buttons:
+
+```kotlin
+BSToastGroup {
+    BSToastAction(
+        id = "toastAction2",
+        text = "Are you sure you want to delete 24 items?",
+        positiveButtonText = "Yes",
+        positiveButtonVariant = ButtonVariant.Primary,
+        negativeButtonVariant = ButtonVariant.Danger,
+        negativeButtonText = "Cancel",
+        style = ToastStyle.Dark,
+        onPositiveButtonClick = {},
+        onNegativeButtonClick = {}
+    )
+}
 ```
