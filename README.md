@@ -20,6 +20,7 @@
 - [Switch](#switch)
 - [Alert](#alert)
 - [Toast](#toast)
+- [Modal](#modal)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -449,3 +450,50 @@ BSToastGroup {
     )
 }
 ```
+
+## Modal
+<p>
+  <img src="/ASSETS/modal.gif?raw=true" alt="Modal Preview" width="560">
+</p> 
+
+`BSModal` component is not visible by default. If you want to show it on your page, then you need to call a modifier `showModalOnClick()` on a `BSButton` or any other clickable composable, and pass the ID of the modal itself. After you do that, just click the component that has that modifier, and your `BSModal` will appear.
+
+<p>A basic Modal usage:</p>
+
+```kotlin
+BSModal(
+    id = "contactModal",
+    title = "Contact us",
+    body = {
+        Column {
+            BSInput(
+                modifier = Modifier
+                  .fillMaxWidth()
+                  .margin(bottom = 14.px),
+                value = "",
+                label = "Email Address",
+                placeholder = "Type here...",
+                onValueChange = {}
+            )
+            BSTextArea(
+                modifier = Modifier.fillMaxWidth(),
+                value = "",
+                label = "Message",
+                placeholder = "Type here...",
+                onValueChange = {}
+            )
+        }
+    },
+    positiveButtonText = "Send Message",
+    negativeButtonText = "Close",
+    onPositiveButtonClick = {},
+    onNegativeButtonClick = {}
+)
+
+BSButton(
+    modifier = Modifier.showModalOnClick(id = "contactModal"),
+    text = "Trigger",
+    onClick = {}
+)
+```
+
