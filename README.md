@@ -17,6 +17,7 @@
 - [TextArea](#textarea)
 - [Checkbox](#checkbox)
 - [RadioButton](#radiobutton)
+- [Switch](#switch)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -324,4 +325,29 @@ BSRadioButtonGroup(toggleButton = true) {
     BSRadioButton(label = "iOS", onClick = {})
     BSRadioButton(label = "Web", onClick = {})
 }
+```
+
+## Switch
+<p>
+  <img src="/ASSETS/switches.gif?raw=true" alt="Switches Preview" width="700">
+</p> 
+
+<p>Switch with a default checked state:</p>
+
+```kotlin
+BSSwitch(
+    label = "Android",
+    defaultChecked = true,
+    onClick = {}
+)
+```
+
+<p>Disabled Switch with a default unchecked state:</p>
+
+```kotlin
+BSSwitch(
+    label = "Android",
+    disabled = true,
+    onClick = {}
+)
 ```
