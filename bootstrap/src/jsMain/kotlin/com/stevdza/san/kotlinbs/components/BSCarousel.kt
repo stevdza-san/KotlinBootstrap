@@ -1,7 +1,9 @@
 package com.stevdza.san.kotlinbs.components
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import com.stevdza.san.kotlinbs.models.CarouselItem
+import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.attrsModifier
@@ -38,7 +40,7 @@ import org.jetbrains.compose.web.dom.*
 @Composable
 fun BSCarousel(
     modifier: Modifier = Modifier,
-    id: String,
+    id: String? = null,
     items: List<CarouselItem>,
     width: CSSNumeric,
     height: CSSNumeric,
@@ -48,8 +50,11 @@ fun BSCarousel(
     dark: Boolean = false,
     objectFit: ObjectFit = ObjectFit.Fill,
 ) {
+    val randomId = remember {
+        id ?: UniqueIdGenerator.generateUniqueId("carousel")
+    }
     Div(attrs = modifier
-        .id(id)
+        .id(randomId)
         .classNames("carousel", "slide")
         .width(width)
         .height(height)
@@ -144,7 +149,7 @@ fun BSCarousel(
                         .classNames("carousel-control-prev")
                         .toAttrs {
                             attr("type", "button")
-                            attr("data-bs-target", "#$id")
+                            attr("data-bs-target", "#$randomId")
                             attr("data-bs-slide", "prev")
                         }
                 ) {
@@ -168,7 +173,7 @@ fun BSCarousel(
                         .classNames("carousel-control-next")
                         .toAttrs {
                             attr("type", "button")
-                            attr("data-bs-target", "#$id")
+                            attr("data-bs-target", "#$randomId")
                             attr("data-bs-slide", "next")
                         }
                 ) {
