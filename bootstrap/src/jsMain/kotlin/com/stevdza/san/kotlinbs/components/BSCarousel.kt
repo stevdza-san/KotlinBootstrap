@@ -1,9 +1,6 @@
 package com.stevdza.san.kotlinbs.components
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import com.stevdza.san.kotlinbs.models.CarouselItem
 import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -14,7 +11,6 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
 import org.jetbrains.compose.web.css.CSSNumeric
 import org.jetbrains.compose.web.dom.*
-import kotlin.js.Date
 
 /**
  * An interactive UI element that allows you to showcase a collection of images
@@ -27,6 +23,7 @@ import kotlin.js.Date
  * transitions between slides, creating a smooth and visually engaging experience
  * for the user.
  *
+ * @param id A unique identifier of the component.
  * @param items Single or multiple [CarouselItem]'s that will be shown into the carousel.
  * Each item contains a mandatory image parameter, and optional title and body.
  * @param width Width of the container.
@@ -41,6 +38,7 @@ import kotlin.js.Date
 @Composable
 fun BSCarousel(
     modifier: Modifier = Modifier,
+    id: String,
     items: List<CarouselItem>,
     width: CSSNumeric,
     height: CSSNumeric,
@@ -50,9 +48,8 @@ fun BSCarousel(
     dark: Boolean = false,
     objectFit: ObjectFit = ObjectFit.Fill,
 ) {
-    val carouselId by remember { mutableStateOf(Date.now().toInt()) }
     Div(attrs = modifier
-        .id("carousel$carouselId")
+        .id(id)
         .classNames("carousel", "slide")
         .width(width)
         .height(height)
@@ -147,7 +144,7 @@ fun BSCarousel(
                         .classNames("carousel-control-prev")
                         .toAttrs {
                             attr("type", "button")
-                            attr("data-bs-target", "#carousel$carouselId")
+                            attr("data-bs-target", "#$id")
                             attr("data-bs-slide", "prev")
                         }
                 ) {
@@ -171,7 +168,7 @@ fun BSCarousel(
                         .classNames("carousel-control-next")
                         .toAttrs {
                             attr("type", "button")
-                            attr("data-bs-target", "#carousel$carouselId")
+                            attr("data-bs-target", "#$id")
                             attr("data-bs-slide", "next")
                         }
                 ) {
