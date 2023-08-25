@@ -26,6 +26,7 @@
 - [Progress](#progress)
 - [Spinner](#spinner)
 - [Tooltip](#tooltip)
+- [Collapse](#collapse)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -630,4 +631,43 @@ BSTooltip(
         }
     }
 )
+```
+
+## Collapse
+<p>
+  <img src="/ASSETS/collapse.gif?raw=true" alt="Collapse Preview" width="500">
+</p> 
+
+To make your button or any other clickable component as the one that triggers the `BSCollapse`, you need to add a `.showCollapse(id)` modifier and pass the `BSCollapse` id.
+
+```kotlin
+Column(
+    modifier = Modifier.width(400.px),
+    horizontalAlignment = Alignment.CenterHorizontally
+) {
+    BSButton(
+        modifier = Modifier
+            .alignContent(AlignContent.Center)
+            .showCollapse(id = "collapse1"),
+        text = "FAQ",
+        onClick = {}
+    )
+    BSCollapse(id = "collapse1") {
+        Column(modifier = Modifier.margin(top = 14.px)) {
+            SpanText(
+                modifier = Modifier
+                    .fontSize(18.px)
+                    .fontWeight(FontWeight.Bold),
+                text = "1. How long does the course take to complete?"
+            )
+            SpanText(
+                text = """
+                      The course is self-paced, so you can complete it at your own speed.
+                      On average, most students finish the course in about 3-6 weeks, 
+                      depending on the time they can dedicate to learning.
+                """.trimIndent()
+            )
+        }
+    }
+}
 ```
