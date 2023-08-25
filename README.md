@@ -27,6 +27,7 @@
 - [Spinner](#spinner)
 - [Tooltip](#tooltip)
 - [Collapse](#collapse)
+- [Carousel](#carousel)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -670,4 +671,33 @@ Column(
         }
     }
 }
+```
+
+## Carousel
+<p>
+  <img src="/ASSETS/carousel.gif?raw=true" alt="Carousel Preview" width="700">
+</p> 
+
+A basic usage of Carousel component:
+
+```kotlin
+BSCarousel(
+    modifier = Modifier.fillMaxWidth(),
+    items = listOf(
+        CarouselItem(
+            image = "https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            title = "Moraine Lake"
+        ),
+        CarouselItem(
+            image = "https://images.pexels.com/photos/147411/italy-mountains-dawn-daybreak-147411.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            title = "Italy"
+        ),
+        CarouselItem(
+            image = "https://images.pexels.com/photos/1166209/pexels-photo-1166209.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            title = "Lavender"
+        ),
+    ),
+    width = 900.px,
+    height = 500.px
+)
 ```
