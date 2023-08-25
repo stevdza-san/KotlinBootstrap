@@ -25,6 +25,7 @@
 - [Range](#range)
 - [Progress](#progress)
 - [Spinner](#spinner)
+- [Tooltip](#tooltip)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -589,4 +590,44 @@ BSSpinner(variant = SpinnerVariant.Default)
 
 ```kotlin
 BSSpinner(variant = SpinnerVariant.DefaultGrow)
+```
+
+## Tooltip
+<p>
+  <img src="/ASSETS/tooltip.gif?raw=true" alt="Tooltip Preview">
+</p> 
+
+Before you can use and display a Tooltip, you need to initialize them by calling `initializeTooltips()` function:
+
+```kotlin
+LaunchedEffect(Unit) {
+    initializeTooltips()
+}
+```
+
+Usually, the content on top of which you want to add a tooltip, is specified as a content lambda of the `BSTooltip` composable:
+
+```kotlin
+BSTooltip(
+    text = "https://stevdza-san.com",
+    content = {
+        A(href = "https://stevdza-san.com") {
+            SpanText(text = "Online Courses")
+        }
+    }
+)
+```
+
+You can also change a direction of the tooltip, by using `TooltipDirection` parameter:
+
+```kotlin
+BSTooltip(
+    text = "https://stevdza-san.com",
+    direction = TooltipDirection.Right,
+    content = {
+        A(href = "https://stevdza-san.com") {
+            SpanText(text = "Online Courses")
+        }
+    }
+)
 ```
