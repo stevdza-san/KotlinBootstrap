@@ -14,6 +14,7 @@ import org.jetbrains.compose.web.dom.Div
  * is collapsing. Instead, use the class as an independent wrapping element.
  * This component comes with a [showCollapse] util function, that is used to
  * trigger/show this component.
+ * @param id A unique identifier of the component.
  * @param content The content that you're trying to hide.
  * */
 @Composable
