@@ -1,41 +1,46 @@
 package com.stevdza.san.kotlinbs.pages
 
 import androidx.compose.runtime.Composable
-import com.stevdza.san.kotlinbs.components.BSCarousel
-import com.stevdza.san.kotlinbs.models.CarouselItem
-import com.varabyte.kobweb.compose.foundation.layout.Box
+import com.stevdza.san.kotlinbs.components.BSBreadcrumb
+import com.stevdza.san.kotlinbs.models.BreadcrumbItem
+import com.varabyte.kobweb.compose.foundation.layout.Arrangement
+import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.core.Page
-import org.jetbrains.compose.web.css.px
 
 @Page
 @Composable
 fun HomePage() {
-    Box(
+    Column (
         modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
-        BSCarousel(
-            modifier = Modifier.fillMaxWidth(),
+        BSBreadcrumb(
             items = listOf(
-                CarouselItem(
-                    image = "https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                    title = "Moraine Lake"
+                BreadcrumbItem(
+                    text = "Home",
+                    href = "https://google.com"
                 ),
-                CarouselItem(
-                    image = "https://images.pexels.com/photos/147411/italy-mountains-dawn-daybreak-147411.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                    title = "Italy"
+                BreadcrumbItem(
+                    text = "Pricing",
+                    href = "https://google.com"
                 ),
-                CarouselItem(
-                    image = "https://images.pexels.com/photos/1166209/pexels-photo-1166209.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                    title = "Lavender"
+                BreadcrumbItem(
+                    text = "Services",
+                    href = "https://google.com"
                 ),
-            ),
-            width = 900.px,
-            height = 500.px
+                BreadcrumbItem(
+                    text = "About",
+                    href = "https://google.com"
+                ),
+                BreadcrumbItem(
+                    text = "Contact us",
+                    href = "https://google.com"
+                )
+            )
         )
     }
 }

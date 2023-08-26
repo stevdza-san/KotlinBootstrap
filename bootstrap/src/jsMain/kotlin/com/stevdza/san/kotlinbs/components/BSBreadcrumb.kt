@@ -19,19 +19,19 @@ import org.jetbrains.compose.web.dom.*
  * @param items One or multiple [BreadcrumbItem]'s that allows you to specify a text
  * along with the link(href) which is used for navigation.
  * @param currentItem An item that is marked as selected.
- * @param separator A symbol which is used to separate [BreadcrumbItem]'s.
+ * @param divider A symbol which is used to separate [BreadcrumbItem]'s.
  * */
 @Composable
 fun BSBreadcrumb(
     modifier: Modifier = Modifier,
     items: List<BreadcrumbItem>,
     currentItem: String = items.first().text,
-    separator: String = "/"
+    divider: String = "/"
 ) {
     Nav(attrs = modifier
         .toAttrs {
             attr("aria-label", "breadcrumb")
-            attr("style", "--bs-breadcrumb-divider: '$separator';")
+            attr("style", "--bs-breadcrumb-divider: '$divider';")
         }
     ) {
         Ol(
