@@ -28,6 +28,7 @@
 - [Tooltip](#tooltip)
 - [Collapse](#collapse)
 - [Carousel](#carousel)
+- [Breadcrumb](#breadcrumb)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -698,5 +699,41 @@ BSCarousel(
     ),
     width = 900.px,
     height = 500.px
+)
+```
+
+## Breadcrumb
+<p>
+  <img src="/ASSETS/breadcrumb.gif?raw=true" alt="Breadcrumb Preview">
+</p> 
+
+You can specify and replace a default `divider` parameter to change a separator string, and also you can set a currently selected `BreadcrumbItem` as well.
+
+```kotlin
+BSBreadcrumb(
+    items = listOf(
+        BreadcrumbItem(
+            text = "Home",
+            href = "https://google.com"
+        ),
+        BreadcrumbItem(
+            text = "Pricing",
+            href = "https://google.com"
+        ),
+        BreadcrumbItem(
+            text = "Services",
+            href = "https://google.com"
+        ),
+        BreadcrumbItem(
+            text = "About",
+            href = "https://google.com"
+        ),
+        BreadcrumbItem(
+            text = "Contact us",
+            href = "https://google.com"
+        )
+    ),
+    divider = ">",
+    currentItem = "About"
 )
 ```
