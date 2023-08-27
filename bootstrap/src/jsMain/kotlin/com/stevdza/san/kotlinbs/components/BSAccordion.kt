@@ -7,6 +7,7 @@ import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
 import com.varabyte.kobweb.compose.ui.modifiers.id
+import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.text.SpanText
 import org.jetbrains.compose.web.dom.Button
@@ -20,12 +21,18 @@ import org.jetbrains.compose.web.dom.H2
  * @param id A unique identifier for the parent.
  * @param items One or multiple [AccordionItem]'s that represents the content that
  * you want to make expandable.
+ * @param flush If set to true, it will remove some borders and rounded corners
+ * to render accordions edge-to-edge with their parent container.
+ * @param alwaysOpen If set to true, it will make accordion items stay open
+ * when another item is opened.
  * */
 @Composable
 fun BSAccordion(
     modifier: Modifier = Modifier,
     id: String? = null,
-    items: List<AccordionItem>
+    items: List<AccordionItem>,
+    flush: Boolean = false,
+    alwaysOpen: Boolean = false
 ) {
     val randomId = remember {
         id ?: UniqueIdGenerator.generateUniqueId("accordion")
@@ -34,24 +41,33 @@ fun BSAccordion(
         attrs = modifier
             .id(randomId)
             .classNames("accordion")
+            .thenIf(
+                condition = flush,
+                other = Modifier.classNames("accordion-flush")
+            )
             .toAttrs()
     ) {
-        items.forEach { accordionItem ->
+        items.forEachIndexed { index, accordionItem ->
+            val newRandomId = UniqueIdGenerator.generateUniqueId("$index-accordion")
             Div(attrs = Modifier.classNames("accordion-item").toAttrs()) {
                 H2(
                     attrs = Modifier
-                        .id("header${accordionItem.body.hashCode()}")
+                        .id("header-${randomId}")
                         .classNames("accordion-header")
                         .toAttrs()
                 ) {
                     Button(attrs = Modifier
-                        .classNames("accordion-button", "collapsed")
+                        .classNames("accordion-button")
+                        .thenIf(
+                            condition = !accordionItem.defaultOpened,
+                            other = Modifier.classNames("collapsed")
+                        )
                         .toAttrs {
                             attr("type", "button")
                             attr("data-bs-toggle", "collapse")
-                            attr("data-bs-target", "#collapse${accordionItem.hashCode()}")
+                            attr("data-bs-target", "#collapse-${newRandomId}")
                             attr("aria-expanded", "true")
-                            attr("aria-controls", "collapse${accordionItem.hashCode()}")
+                            attr("aria-controls", "collapse-${newRandomId}")
                         }
                     ) {
                         SpanText(text = accordionItem.title)
@@ -59,15 +75,19 @@ fun BSAccordion(
                 }
                 Div(
                     attrs = Modifier
-                        .id("collapse${accordionItem.hashCode()}")
+                        .id("collapse-${newRandomId}")
                         .classNames("accordion-collapse", "collapse")
+                        .thenIf(
+                            condition = accordionItem.defaultOpened,
+                            other = Modifier.classNames("show")
+                        )
                         .toAttrs {
-                            attr("aria-labelledby", "header${accordionItem.body.hashCode()}")
-                            attr("data-bs-parent", randomId)
+                            attr("aria-labelledby", "header-${randomId}")
+                            if (!alwaysOpen) attr("data-bs-parent", "#${randomId}")
                         }
                 ) {
                     Div(attrs = Modifier.classNames("accordion-body").toAttrs()) {
-                        SpanText(accordionItem.body)
+                        accordionItem.content()
                     }
                 }
             }
