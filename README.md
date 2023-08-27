@@ -5,10 +5,9 @@
 </p>
 
 <h3 align="center">Kotlin Bootstrap</h3>
-<p align="center">
-  ⚡Highly experimental library built on top of the <a href="https://github.com/varabyte/kobweb" target="_blank" rel="noopener noreferrer">Kobweb</a>(Compose HTML framework). It allows you to use the official <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer">Bootstrap</a> UI components with Kotlin and Jetpack Compose, to build a frontend on the web. You are required to use the kobweb framework, otherwise it won't work.
+<p>
+  ⚡Highly experimental library built on top of the <a href="https://github.com/varabyte/kobweb" target="_blank" rel="noopener noreferrer">Kobweb</a>(Compose HTML framework). It allows you to use the official <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer">Bootstrap</a> UI components with Kotlin and Jetpack Compose, to build a frontend on the web. You are required to use the kobweb framework, otherwise it won't work. At the moment, components are not yet fully customizable, but I'll work on it. The goal is to release all bootstrap components, and only then work on it's customization furthermore.
 </p>
-
 
 ## Available Components
 - [Button](#button)
@@ -28,6 +27,7 @@
 - [Tooltip](#tooltip)
 - [Collapse](#collapse)
 - [Carousel](#carousel)
+- [Breadcrumb](#breadcrumb)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -698,5 +698,41 @@ BSCarousel(
     ),
     width = 900.px,
     height = 500.px
+)
+```
+
+## Breadcrumb
+<p>
+  <img src="/ASSETS/breadcrumb.gif?raw=true" alt="Breadcrumb Preview">
+</p> 
+
+You can specify and replace a default `divider` parameter to change a separator string, and also you can set a currently selected `BreadcrumbItem` as well.
+
+```kotlin
+BSBreadcrumb(
+    items = listOf(
+        BreadcrumbItem(
+            text = "Home",
+            href = "https://google.com"
+        ),
+        BreadcrumbItem(
+            text = "Pricing",
+            href = "https://google.com"
+        ),
+        BreadcrumbItem(
+            text = "Services",
+            href = "https://google.com"
+        ),
+        BreadcrumbItem(
+            text = "About",
+            href = "https://google.com"
+        ),
+        BreadcrumbItem(
+            text = "Contact us",
+            href = "https://google.com"
+        )
+    ),
+    divider = ">",
+    currentItem = "About"
 )
 ```
