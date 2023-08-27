@@ -28,6 +28,7 @@
 - [Collapse](#collapse)
 - [Carousel](#carousel)
 - [Breadcrumb](#breadcrumb)
+- [Accordion](#accordion)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -713,26 +714,60 @@ BSBreadcrumb(
     items = listOf(
         BreadcrumbItem(
             text = "Home",
-            href = "https://google.com"
+            href = "#"
         ),
         BreadcrumbItem(
             text = "Pricing",
-            href = "https://google.com"
+            href = "#"
         ),
         BreadcrumbItem(
             text = "Services",
-            href = "https://google.com"
+            href = "#"
         ),
         BreadcrumbItem(
             text = "About",
-            href = "https://google.com"
+            href = "#"
         ),
         BreadcrumbItem(
             text = "Contact us",
-            href = "https://google.com"
+            href = "#"
         )
     ),
     divider = ">",
     currentItem = "About"
+)
+```
+
+## Accordion
+<p>
+  <img src="/ASSETS/accordion.gif?raw=true" alt="Accordion Preview" width="500">
+</p> 
+
+You can customize it's `flush` parameter which will remove some borders and rounded corners to render accordions edge-to-edge with their parent container. `alwaysOpen` parameter will make accordion items stay open when another item is opened.
+
+<p>Basic Accordion example:</p>
+
+```kotlin
+BSAccordion(
+    modifier = Modifier.width(300.px),
+    items = listOf(
+        AccordionItem(
+            title = "Step 01: Identify your goals",
+            content = { SpanText(text = "Body text here...") },
+            defaultOpened = true
+        ),
+        AccordionItem(
+            title = "Step 02: Write your goals",
+            content = {  SpanText(text = "Body text here...")}
+        ),
+        AccordionItem(
+            title = "Step 03: Analysis",
+            content = {  SpanText(text = "Body text here...")}
+        ),
+        AccordionItem(
+            title = "Step 04: Objectives",
+            content = { SpanText(text = "Body text here...")}
+        )
+    )
 )
 ```
