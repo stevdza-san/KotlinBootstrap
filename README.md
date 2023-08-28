@@ -31,6 +31,7 @@
 - [Accordion](#accordion)
 - [Badge](#badge)
 - [CloseButton](#closebutton)
+- [ColorPicker](#colorpicker)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -804,4 +805,15 @@ A basic usage:
 
 ```kotlin
 BSCloseButton()
+```
+
+## ColorPicker
+<p>
+  <img src="/ASSETS/colorpicker.gif?raw=true" alt="ColorPicker Preview">
+</p> 
+
+A basic usage:
+
+```kotlin
+BSColorPicker(onColorSelected = {})
 ```
