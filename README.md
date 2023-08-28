@@ -29,6 +29,7 @@
 - [Carousel](#carousel)
 - [Breadcrumb](#breadcrumb)
 - [Accordion](#accordion)
+- [Badge](#badge)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -770,4 +771,25 @@ BSAccordion(
         )
     )
 )
+```
+
+## Badge
+<p>
+  <img src="/ASSETS/badge.png" alt="Badge Preview">
+</p> 
+
+There are four different `BadgeVariant`'s: Straight, Regular, Rounded, Empty. You can customize the `BackgroundStyle` of the badge, a `fontFamily`, `fontSize`, and `fontWeight` as well.
+
+```kotlin
+Row(verticalAlignment = Alignment.CenterVertically) {
+    SpanText(
+        modifier = Modifier.margin(right = 8.px),
+        text = "Fitness Tracker"
+    )
+    BSBadge(
+        modifier = Modifier.margin(bottom = 8.px),
+        text = "New",
+        variant = BadgeVariant.Straight
+    )
+}
 ```
