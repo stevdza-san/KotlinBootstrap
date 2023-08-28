@@ -31,7 +31,7 @@ import org.jetbrains.compose.web.dom.Text
 fun BSColorPicker(
     modifier: Modifier = Modifier,
     id: String? = null,
-    label: String = "Color Picker",
+    label: String? = null,
     title: String = "Choose your color",
     size: InputSize = InputSize.Default,
     disabled: Boolean = false,
@@ -48,7 +48,7 @@ fun BSColorPicker(
             forId = randomId
         )
         {
-            Text(value = label)
+            label?.let { Text(value = it) }
         }
         Input(
             attrs = Modifier
