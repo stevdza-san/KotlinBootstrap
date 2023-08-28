@@ -30,6 +30,7 @@
 - [Breadcrumb](#breadcrumb)
 - [Accordion](#accordion)
 - [Badge](#badge)
+- [CloseButton](#closebutton)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -792,4 +793,15 @@ Row(verticalAlignment = Alignment.CenterVertically) {
         variant = BadgeVariant.Straight
     )
 }
+```
+
+## CloseButton
+<p>
+  <img src="/ASSETS/closebutton.gif?raw=true" alt="CloseButton Preview">
+</p> 
+
+A basic usage:
+
+```kotlin
+BSCloseButton()
 ```
