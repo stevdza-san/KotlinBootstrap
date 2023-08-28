@@ -32,6 +32,7 @@
 - [Badge](#badge)
 - [CloseButton](#closebutton)
 - [ColorPicker](#colorpicker)
+- [FilePicker](#filepicker)
 
 ## Usage
 Update a Project level `build.gradle.kts` file:
@@ -816,4 +817,20 @@ A basic usage:
 
 ```kotlin
 BSColorPicker(onColorSelected = {})
+```
+
+## FilePicker
+<p>
+  <img src="/ASSETS/filepicker.gif?raw=true" alt="FilePicker Preview">
+</p> 
+
+FilePicker component provides a required lambda `onFileSelected`, that returns two strings. The first one represents a fileName, while the second one the actual file encoded in BASE_64 string.
+
+A basic usage:
+
+```kotlin
+BSFileInput(
+    label = "Choose a file",
+    onFileSelected = { fileName, file -> }
+)
 ```
