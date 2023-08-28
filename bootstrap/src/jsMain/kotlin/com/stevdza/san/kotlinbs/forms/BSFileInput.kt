@@ -45,7 +45,7 @@ import org.jetbrains.compose.web.dom.Text
 fun BSFileInput(
     modifier: Modifier = Modifier,
     id: String? = null,
-    label: String = "Choose a File",
+    label: String? = null,
     placeholder: String = "No file selected.",
     size: InputSize = InputSize.Default,
     disabled: Boolean = false,
@@ -57,14 +57,16 @@ fun BSFileInput(
     }
     var placeholderText by remember { mutableStateOf(placeholder) }
     Div(attrs = modifier.toAttrs()) {
-        Label(
-            attrs = Modifier
-                .classNames("form-label")
-                .toAttrs(),
-            forId = randomId
-        )
-        {
-            Text(value = label)
+        if(label != null) {
+            Label(
+                attrs = Modifier
+                    .classNames("form-label")
+                    .toAttrs(),
+                forId = randomId
+            )
+            {
+                Text(value = label)
+            }
         }
         Row(
             modifier = Modifier

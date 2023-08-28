@@ -1,9 +1,9 @@
 package com.stevdza.san.kotlinbs.pages
 
 import androidx.compose.runtime.Composable
-import com.stevdza.san.kotlinbs.forms.BSColorPicker
+import com.stevdza.san.kotlinbs.forms.BSFileInput
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
-import com.varabyte.kobweb.compose.foundation.layout.Row
+import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
@@ -12,11 +12,14 @@ import com.varabyte.kobweb.core.Page
 @Page
 @Composable
 fun HomePage() {
-    Row(
+    Column (
         modifier = Modifier.fillMaxSize(),
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        BSColorPicker(onColorSelected = {})
+        BSFileInput(
+            label = "Choose a file",
+            onFileSelected = { fileName, file -> }
+        )
     }
 }
