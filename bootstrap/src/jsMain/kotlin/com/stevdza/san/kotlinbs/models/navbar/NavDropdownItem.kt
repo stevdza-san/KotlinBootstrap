@@ -1,4 +1,4 @@
-package com.stevdza.san.kotlinbs.models
+package com.stevdza.san.kotlinbs.models.navbar
 
 data class NavDropdown(
     val placeholder: String,
@@ -8,5 +8,5 @@ data class NavDropdown(
 data class NavDropdownItem(
     val id: String,
     val title: String,
-    val href: String
+    val onClick: (Int) -> Unit
 )

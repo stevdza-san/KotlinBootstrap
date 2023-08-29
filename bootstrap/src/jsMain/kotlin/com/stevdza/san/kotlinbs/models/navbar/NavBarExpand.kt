@@ -1,4 +1,4 @@
-package com.stevdza.san.kotlinbs.models
+package com.stevdza.san.kotlinbs.models.navbar
 
 enum class NavBarExpand(val value: String) {
     SM(value = "navbar-expand-sm"),

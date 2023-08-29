@@ -2,12 +2,15 @@ package com.stevdza.san.kotlinbs.components
 
 import androidx.compose.runtime.Composable
 import com.stevdza.san.kotlinbs.forms.BSInput
-import com.stevdza.san.kotlinbs.models.*
+import com.stevdza.san.kotlinbs.models.BackgroundStyle
+import com.stevdza.san.kotlinbs.models.navbar.*
+import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.*
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.text.SpanText
+import org.jetbrains.compose.web.css.CSSNumeric
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.*
 
@@ -20,74 +23,86 @@ import org.jetbrains.compose.web.dom.*
  * elements such as links, buttons, dropdown menus, and branding elements like logos or
  * site names. It adapts to different screen sizes and devices, making it ideal for
  * responsive web design.
+ * @param stickyTop Whether to make this component stickied on the top.
  * @param brand A [NavBarBrand] that allows you to specify a brand text, and optional
  * brand image as well.
  * @param items Currently there are two different [NavItem]'s that you can use. [NavLink]
  * that represents a simple link within this component, usually used to navigate between
  * different pages on your website. And the second one [NavDropdown] used to display a
  * dropdown menu item within this component.
- * @param inputField Use this parameter if you want to display an input field with an
- * optional button inside your component.
- * @param navText A simple text element that appears on this component.
+ * @param itemsAlignment The alignment of the NavBar items.
+ * @param inputField Use this parameter if you want to display an input field.
+ * @param button An optional button.
  * @param expand This parameter allows you to specify when should your component
  * display a collapsed state.
+ * @param horizontalPadding The padding on the left/right of the component.
  * @param backgroundStyle A background style of this component.
- * @param onNavLinkClick Lambda that is triggered when you click on one of the [NavLink]'s.
- * It provides two values, the first one is an index position of the [NavLink], and the
- * second one is it's title.
- * @param onNavDropdownItemClick Lambda that is triggered when you click on one of the
- * [NavDropdownItem]'s. It provides two values, the first one is an index position of
- * the [NavDropdownItem], and the second one is it's title.
  * */
 @Composable
 fun BSNavBar(
     modifier: Modifier = Modifier,
-    brand: NavBarBrand,
+    stickyTop: Boolean = false,
+    brand: NavBarBrand? = null,
     items: List<NavItem>,
+    itemsAlignment: Alignment.Horizontal = Alignment.Start,
     inputField: NavBarInputField? = null,
-    navText: String? = null,
+    button: NavBarButton? = null,
     expand: NavBarExpand = NavBarExpand.LG,
-    backgroundStyle: BackgroundStyle = BackgroundStyle.Light,
-    onNavLinkClick: (Int, NavLink) -> Unit,
-    onNavDropdownItemClick: (Int, NavDropdownItem) -> Unit
+    horizontalPadding: CSSNumeric = 8.px,
+    backgroundStyle: BackgroundStyle = BackgroundStyle.Light
 ) {
     Nav(
         attrs = modifier
             .classNames(
                 "navbar",
                 expand.value,
-                backgroundStyle.value,
+                backgroundStyle.value
+            )
+            .thenIf(
+                condition = stickyTop,
+                other = Modifier.classNames("sticky-top")
+            )
+            .toAttrs {
                 if (backgroundStyle == BackgroundStyle.Light ||
                     backgroundStyle == BackgroundStyle.Info ||
                     backgroundStyle == BackgroundStyle.Warning
-                ) "navbar-light"
-                else "navbar-dark"
-            )
-            .toAttrs()
+                ) {
+                    attr("data-bs-theme", "light")
+                } else {
+                    attr("data-bs-theme", "dark")
+                }
+            }
     ) {
         Div(
-            attrs = Modifier.classNames("container-fluid").toAttrs()
+            attrs = Modifier
+                .padding(leftRight = horizontalPadding)
+                .classNames("container-fluid").toAttrs()
         ) {
-            A(
-                attrs = Modifier.classNames("navbar-brand").toAttrs(),
-                href = brand.href
-            ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
+            if (brand != null) {
+                A(
+                    attrs = Modifier
+                        .classNames("navbar-brand")
+                        .toAttrs(),
+                    href = brand.href
                 ) {
-                    if (brand.image != null) {
-                        Image(
-                            modifier = Modifier
-                                .size(brand.imageSize)
-                                .classNames("d-inline-block", "align-text-top")
-                                .attrsModifier {
-                                    attr("alt", "logo")
-                                },
-                            src = brand.image,
-                            desc = "Brand Logo"
-                        )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        if (brand.image != null) {
+                            Image(
+                                modifier = Modifier
+                                    .width(brand.imageWidth)
+                                    .margin(right = 8.px)
+                                    .classNames("d-inline-block", "align-text-top")
+                                    .attrsModifier {
+                                        attr("alt", "logo")
+                                    },
+                                src = brand.image,
+                                desc = "Brand Logo"
+                            )
+                        }
+                        SpanText(brand.title)
                     }
-                    SpanText(brand.title)
                 }
             }
             Button(
@@ -111,7 +126,10 @@ fun BSNavBar(
             ) {
                 Ul(
                     attrs = Modifier
-                        .classNames("navbar-nav", "me-auto", "mb-2", "mb-lg-0")
+                        .classNames(
+                            "navbar-nav",
+                            if (itemsAlignment is Alignment.Start) "me-auto" else if (itemsAlignment is Alignment.End) "ms-auto" else "mx-auto"
+                        )
                         .toAttrs()
                 ) {
                     items.forEachIndexed { index, navItem ->
@@ -140,15 +158,15 @@ fun BSNavBar(
                                             attrs = Modifier
                                                 .id(dropdownItem.id)
                                                 .onClick {
-                                                    onNavDropdownItemClick(index, dropdownItem)
+                                                    dropdownItem.onClick(index)
                                                 }
                                                 .toAttrs()
                                         ) {
                                             A(
                                                 attrs = Modifier
                                                     .classNames("dropdown-item")
+                                                    .cursor(Cursor.Pointer)
                                                     .toAttrs(),
-                                                href = dropdownItem.href
                                             ) { Text(value = dropdownItem.title) }
                                         }
                                     }
@@ -159,7 +177,7 @@ fun BSNavBar(
                                 attrs = Modifier
                                     .id(navItem.id)
                                     .classNames("nav-item")
-                                    .onClick { onNavLinkClick(index, navItem) }
+                                    .onClick { navItem.onClick(index) }
                                     .toAttrs()
                             ) {
                                 A(
@@ -173,10 +191,10 @@ fun BSNavBar(
                                             condition = navItem.disabled,
                                             other = Modifier.classNames("disabled")
                                         )
+                                        .cursor(Cursor.Pointer)
                                         .toAttrs {
                                             if (navItem.active) attr("aria-current", "page")
-                                        },
-                                    href = navItem.href
+                                        }
                                 ) {
                                     Text(value = navItem.title)
                                 }
@@ -184,39 +202,38 @@ fun BSNavBar(
                         }
                     }
                 }
-                if (navText != null) {
-                    Span(
-                        attrs = Modifier
-                            .margin(right = if (inputField != null) 8.px else 0.px)
-                            .classNames("navbar-text")
-                            .toAttrs()
-                    ) {
-                        Text(value = navText)
-                    }
-                }
-                if (inputField != null) {
-                    Form(
-                        attrs = Modifier
-                            .classNames("d-flex")
-                            .toAttrs {
-                                attr("role", "search")
-                            }
-                    ) {
+                Form(
+                    attrs = Modifier
+                        .classNames("d-flex")
+                        .toAttrs {
+                            attr("role", "search")
+                        }
+                ) {
+                    if (inputField != null) {
                         BSInput(
+                            modifier = Modifier
+                                .thenIf(
+                                    condition = button != null,
+                                    other = Modifier.margin(right = 8.px)
+                                ),
+                            id = inputField.id,
                             placeholder = inputField.placeholder,
                             value = inputField.value,
                             onValueChange = inputField.onValueChange,
                             onEnterClick = inputField.onEnterClick
                         )
-                        if (inputField.button != null) {
-                            BSButton(
-                                modifier = Modifier.margin(left = 8.px),
-                                text = inputField.button.text,
-                                variant = inputField.button.variant,
-                                type = inputField.button.type,
-                                onClick = inputField.button.onClick
-                            )
-                        }
+                    }
+                    if (button != null) {
+                        BSButton(
+                            id = button.id,
+                            text = button.text,
+                            variant = button.variant,
+                            disabled = button.disabled,
+                            loading = button.loading,
+                            loadingText = button.loadingText,
+                            badge = button.badge,
+                            onClick = button.onClick
+                        )
                     }
                 }
             }
