@@ -850,6 +850,23 @@ BSNavBar(
 )
 ```
 
+<p>
+  <img src="/ASSETS/navbar2.gif?raw=true" alt="NavBar Preview">
+</p> 
+
+You can add an extra parameter, to replace a default expandable menu with an `Offcanvas` side bar:
+```kotlin
+BSNavBar(
+    ..
+    offcanvas = NavBarOffcanvas(
+        id = "myOffcanvas",
+        title = "KotlinBootstrap",
+        dark = true
+    )
+    ..
+)
+```
+
 ## Offcanvas
 <p>
   <img src="/ASSETS/offcanvas.gif?raw=true" alt="Offcanvas Preview">
