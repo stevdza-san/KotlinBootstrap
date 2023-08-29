@@ -29,6 +29,7 @@
 - [Carousel](#carousel)
 - [Breadcrumb](#breadcrumb)
 - [Accordion](#accordion)
+- [NavBar](#navbar)
 - [Badge](#badge)
 - [CloseButton](#closebutton)
 - [ColorPicker](#colorpicker)
@@ -772,6 +773,78 @@ BSAccordion(
             title = "Step 04: Objectives",
             content = { SpanText(text = "Body text here...")}
         )
+    )
+)
+```
+
+## NavBar
+<p>
+  <img src="/ASSETS/navbar.gif?raw=true" alt="NavBar Preview">
+</p> 
+
+The NavBar typically appears at the top of the web page and contains various navigation elements such as links, buttons, dropdown menus, and branding elements like logos or site names. It adapts to different screen sizes and devices, making it ideal for responsive web design.
+
+```kotlin
+BSNavBar(
+    modifier = Modifier.fillMaxWidth(),
+    stickyTop = true,
+    itemsAlignment = Alignment.CenterHorizontally,
+    brand = NavBarBrand(
+        title = "KotlinBootstrap",
+        image = "https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg",
+        href = "#"
+    ),
+    expand = NavBarExpand.LG,
+    backgroundStyle = BackgroundStyle.Dark,
+    items = listOf(
+        NavLink(
+            id = "homeLink",
+            title = "Home",
+            onClick = {
+                println("Index: $it Title: Home")
+            }   
+        ),
+        NavLink(
+            id = "servicesLink",
+            title = "Services",
+            onClick = {}
+        ),
+        NavLink(
+            id = "pricingLink",
+            title = "Pricing",
+            onClick = {}
+        ),
+        NavLink(
+            id = "aboutLink",
+            title = "About us",
+            onClick = {}
+        ),
+        NavDropdown(
+            placeholder = "Language",
+            items = listOf(
+                NavDropdownItem(
+                    id = "kotlinLanguage",
+                    title = "Kotlin",
+                    onClick = {
+                        println("Index: $it Title: Kotlin")
+                    }
+                ),
+                NavDropdownItem(
+                    id = "javaLanguage",
+                    title = "Java",
+                    onClick = {}
+                )
+            )
+        )
+    ),
+    inputField = NavBarInputField(
+        placeholder = "Search",
+        value = "",
+        onValueChange = {}
+    ),
+    button = NavBarButton(
+        text = "Search",
+        onClick = {}
     )
 )
 ```
