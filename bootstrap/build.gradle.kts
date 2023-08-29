@@ -40,7 +40,7 @@ publishing {
             from(components["kotlin"])
             groupId = "com.github.stevdza-san"
             artifactId = "KotlinBootstrap"
-            version = "0.0.1"
+            version = "0.0.2"
         }
     }
 }
