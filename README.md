@@ -36,7 +36,7 @@
 - [ColorPicker](#colorpicker)
 - [FilePicker](#filepicker)
 
-## Usage
+## Install
 Update a Project level `build.gradle.kts` file:
 
 ```gradle
