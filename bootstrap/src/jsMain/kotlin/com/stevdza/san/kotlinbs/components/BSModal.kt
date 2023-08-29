@@ -19,7 +19,7 @@ import org.jetbrains.compose.web.dom.Text
  * to grab the user's attention and prompt them for an action, display additional information,
  * or confirm a choice.
  * This component comes with a [showModalOnClick] util function, that is used to trigger/show
- * this component.
+ * this component. And [hideModalOnClick] that is used to dismiss the same component.
  * @param title Modal title.
  * @param body Modal body.
  * @param negativeButtonText Text of the negative button.
@@ -126,9 +126,16 @@ fun BSModal(
 }
 
 /**
- * Util function which is used in a combination with [BSModal].
+ * Util function which is used to trigger/show [BSModal] component.
  * */
 fun Modifier.showModalOnClick(id: String): Modifier = attrsModifier {
     attr("data-bs-toggle", "modal")
     attr("data-bs-target", "#$id")
+}
+
+/**
+ * Util function which is used to hide [BSModal] component.
+ * */
+fun Modifier.hideModalOnClick(): Modifier = attrsModifier {
+    attr("data-bs-dismiss", "modal")
 }

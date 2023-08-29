@@ -1,86 +1,63 @@
 package com.stevdza.san.kotlinbs.pages
 
 import androidx.compose.runtime.Composable
-import com.stevdza.san.kotlinbs.components.BSNavBar
-import com.stevdza.san.kotlinbs.models.BackgroundStyle
-import com.stevdza.san.kotlinbs.models.navbar.*
+import com.stevdza.san.kotlinbs.components.BSButton
+import com.stevdza.san.kotlinbs.components.BSOffcanvas
+import com.stevdza.san.kotlinbs.components.showOffcanvasOnClick
+import com.stevdza.san.kotlinbs.models.offcanvas.OffcanvasPlacement
+import com.varabyte.kobweb.compose.css.Cursor
+import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.textDecorationLine
+import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.Page
+import com.varabyte.kobweb.silk.components.text.SpanText
+import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.dom.A
 
 @Page
 @Composable
 fun HomePage() {
+    val links = listOf("Home", "Pricing", "Services", "Contact us")
+    BSOffcanvas(
+        id = "myOffCanvas",
+        title = "Welcome!",
+        body = {
+            Column {
+                links.forEach { name ->
+                    A(
+                        attrs = Modifier
+                            .margin(bottom = 16.px)
+                            .textDecorationLine(TextDecorationLine.None)
+                            .cursor(Cursor.Pointer)
+                            .toAttrs()
+                    ) {
+                        SpanText(name)
+                    }
+                }
+                BSButton(
+                    text = "Sign in",
+                    onClick = {}
+                )
+            }
+        },
+        placement = OffcanvasPlacement.END
+    )
     Column(
         modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Top,
+        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        BSNavBar(
-            modifier = Modifier.fillMaxWidth(),
-//            stickyTop = true,
-//            itemsAlignment = Alignment.CenterHorizontally,
-            brand = NavBarBrand(
-                title = "KotlinBootstrap",
-                image = "https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg",
-                href = "#"
-            ),
-            expand = NavBarExpand.LG,
-            backgroundStyle = BackgroundStyle.Dark,
-            items = listOf(
-                NavLink(
-                    id = "homeLink",
-                    title = "Home",
-                    onClick = {
-                        println("Index: $it Title: Home")
-                    }
-                ),
-                NavLink(
-                    id = "servicesLink",
-                    title = "Services",
-                    onClick = {}
-                ),
-                NavLink(
-                    id = "pricingLink",
-                    title = "Pricing",
-                    onClick = {}
-                ),
-                NavLink(
-                    id = "aboutLink",
-                    title = "About us",
-                    onClick = {}
-                ),
-                NavDropdown(
-                    placeholder = "Language",
-                    items = listOf(
-                        NavDropdownItem(
-                            id = "kotlinLanguage",
-                            title = "Kotlin",
-                            onClick = {
-                                println("Index: $it Title: Kotlin")
-                            }
-                        ),
-                        NavDropdownItem(
-                            id = "javaLanguage",
-                            title = "Java",
-                            onClick = {}
-                        )
-                    )
-                )
-            ),
-            inputField = NavBarInputField(
-                placeholder = "Search",
-                value = "",
-                onValueChange = {}
-            ),
-            button = NavBarButton(
-                text = "Search",
-                onClick = {}
-            )
+        BSButton(
+            modifier = Modifier.showOffcanvasOnClick(id = "myOffCanvas"),
+            text = "Show",
+            onClick = {}
         )
     }
 }
