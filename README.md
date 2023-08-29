@@ -30,6 +30,7 @@
 - [Breadcrumb](#breadcrumb)
 - [Accordion](#accordion)
 - [NavBar](#navbar)
+- [Offcanvas](#offcanvas)
 - [Badge](#badge)
 - [CloseButton](#closebutton)
 - [ColorPicker](#colorpicker)
@@ -847,6 +848,53 @@ BSNavBar(
         onClick = {}
     )
 )
+```
+
+## Offcanvas
+<p>
+  <img src="/ASSETS/offcanvas.gif?raw=true" alt="Offcanvas Preview">
+</p> 
+
+Offcanvas is used to create sidebar or panel that can slide in and out of the viewport. This component is often used to display additional content, navigation menus, or options without taking up the entire screen space.
+
+```kotlin
+val links = listOf("Home", "Pricing", "Services", "Contact us")
+BSOffcanvas(
+    id = "myOffCanvas",
+    title = "Welcome!",
+    body = {
+        Column {
+            links.forEach { name ->
+                A(
+                    attrs = Modifier
+                        .margin(bottom = 16.px)
+                        .textDecorationLine(TextDecorationLine.None)
+                        .cursor(Cursor.Pointer)
+                        .toAttrs()
+                ) {
+                    SpanText(name)
+                }
+            }
+            BSButton(
+            text = "Sign in",
+            onClick = {}
+            )
+        }
+    },
+    placement = OffcanvasPlacement.END
+)
+
+Column(
+    modifier = Modifier.fillMaxSize(),
+    verticalArrangement = Arrangement.Center,
+    horizontalAlignment = Alignment.CenterHorizontally
+) {
+    BSButton(
+        modifier = Modifier.showOffcanvasOnClick(id = "myOffCanvas"),
+        text = "Show",
+        onClick = {}
+    )
+}
 ```
 
 ## Badge
