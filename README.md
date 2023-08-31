@@ -147,8 +147,8 @@ BSInput(
 BSInput(
     value = inputValue,
     label = "Email Address",
-    onValueChange = {},
-    floating = true
+    floating = true,
+    onValueChange = {}
 )
 ```
 
@@ -159,10 +159,10 @@ BSInput(
     value = inputValue,
     label = "Email Address",
     placeholder = "Type here",
-    onValueChange = {},
     validation = InputValidation(
       isValid = true
-    )
+    ),
+    onValueChange = {}
 )
 ```
 
@@ -173,10 +173,10 @@ BSInput(
     value = inputValue,
     label = "Email Address",
     placeholder = "Type here",
-    onValueChange = {},
     validation = InputValidation(
       isInvalid = true
-    )
+    ),
+    onValueChange = {}
 )
 ```
 
@@ -187,8 +187,8 @@ BSInput(
     value = inputValue,
     label = "Email Address",
     placeholder = "Type here",
-    onValueChange = {},
-    disabled = true
+    disabled = true,
+    onValueChange = {}
 )
 ```
 
