@@ -9,24 +9,39 @@ import com.varabyte.kobweb.compose.css.disabled
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
 import com.varabyte.kobweb.compose.ui.modifiers.id
-import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
 import org.jetbrains.compose.web.attributes.selected
 import org.jetbrains.compose.web.dom.*
 
+/**
+ * This component allows you to make a single selection from a list of predefined
+ * options. Select components are widely used for various purposes, such as selecting
+ * a country in a registration form, choosing a product category in an e-commerce site, etc.
+ * @param id A unique identifier of the component.
+ * @param items Here you define a list of items to be displayed inside this component.
+ * @param placeholder Placeholder that that will be displayed by default.
+ * @param size The size of the component.
+ * @param validation Define the Valid/Invalid style of the component.
+ * @param disabled Whether this component should be disabled or not.
+ * @param floating Whether to use the floating style of the component.
+ * @param floatingLabel The label that will be displayed on top of the component if
+ * the [floating] is enabled.
+ * @param onItemSelect Lambda which is triggered when you select an option from this
+ * component. It provides an index value and the text of the selected option.
+ * */
 @Composable
 fun BSSelect(
     modifier: Modifier = Modifier,
     id: String? = null,
     items: List<String>,
-    floatingLabel: String = "Select",
     placeholder: String? = null,
     size: SelectSize = SelectSize.Default,
     validation: InputValidation = InputValidation(),
     disabled: Boolean = false,
     floating: Boolean = false,
-    onItemSelected: (Int, String) -> Unit
+    floatingLabel: String = "Select",
+    onItemSelect: (Int, String) -> Unit
 ) {
     val randomId = remember {
         id ?: UniqueIdGenerator.generateUniqueId("select")
@@ -44,7 +59,7 @@ fun BSSelect(
                 validation = validation,
                 size = size,
                 disabled = disabled,
-                onItemSelected = onItemSelected
+                onItemSelect = onItemSelect
             )
             Label(
                 attrs = Modifier
@@ -65,7 +80,7 @@ fun BSSelect(
                 validation = validation,
                 size = size,
                 disabled = disabled,
-                onItemSelected = onItemSelected
+                onItemSelect = onItemSelect
             )
         }
     }
@@ -80,7 +95,7 @@ private fun BSSelectInternal(
     validation: InputValidation,
     size: SelectSize,
     disabled: Boolean,
-    onItemSelected: (Int, String) -> Unit
+    onItemSelect: (Int, String) -> Unit
 ) {
     Select(
         attrs = Modifier
@@ -101,6 +116,13 @@ private fun BSSelectInternal(
             )
             .toAttrs {
                 if (disabled) disabled()
+                onChange {
+                    it.value?.let { text ->
+                        if (text != placeholder) {
+                            onItemSelect(items.indexOf(text), text)
+                        }
+                    }
+                }
             }
     ) {
         if (!placeholder.isNullOrEmpty()) {
@@ -111,13 +133,8 @@ private fun BSSelectInternal(
                 Text(placeholder)
             }
         }
-        items.forEachIndexed { index, text ->
-            Option(
-                attrs = Modifier
-                    .onClick { onItemSelected(index, text) }
-                    .toAttrs(),
-                value = text,
-            ) {
+        items.forEach { text ->
+            Option(value = text) {
                 Text(value = text)
             }
         }
