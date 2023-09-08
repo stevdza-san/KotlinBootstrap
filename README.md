@@ -35,6 +35,7 @@
 - [CloseButton](#closebutton)
 - [ColorPicker](#colorpicker)
 - [FilePicker](#filepicker)
+- [Pagination](#pagination)
 
 ## Install
 Update a Project level `build.gradle.kts` file:
@@ -970,5 +971,31 @@ A basic usage:
 BSFileInput(
     label = "Choose a file",
     onFileSelected = { fileName, file -> }
+)
+```
+
+## Pagination
+<p>
+  <img src="/ASSETS/pagination.gif?raw=true" alt="Pagination Preview">
+</p> 
+
+`BSPagination` component is used to divide long lists or tables into multiple pages, making it easier for users to navigate through the content.
+
+A basic usage:
+
+```kotlin
+var currentPage by remember { mutableStateOf(1) }
+
+BSPagination(
+    pages = 15,
+    maxVisiblePages = 3,
+    currentPage = currentPage,
+    previousButton = PreviousButton(
+        onClick = { currentPage = it }
+    ),
+    nextButton = NextButton(
+        onClick = { currentPage = it }
+    ),
+    onPageClick = { currentPage = it }
 )
 ```
