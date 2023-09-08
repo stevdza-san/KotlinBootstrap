@@ -6,7 +6,7 @@
 
 <h3 align="center">Kotlin Bootstrap</h3>
 <p>
-  ⚡Highly experimental library built on top of the <a href="https://github.com/varabyte/kobweb" target="_blank" rel="noopener noreferrer">Kobweb</a>(Compose HTML framework). It allows you to use the official <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer">Bootstrap</a> UI components with Kotlin and Jetpack Compose, to build a frontend on the web. You are required to use the kobweb framework, otherwise it won't work. At the moment, components are not yet fully customizable, but I'll work on it. ⚽ The goal is to release all bootstrap components, and only then work on it's customization furthermore.
+  ⚡Highly experimental library built on top of the <a href="https://github.com/varabyte/kobweb" target="_blank" rel="noopener noreferrer">Kobweb</a> (Compose HTML framework). It allows you to use the official <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer">Bootstrap</a> UI components with Kotlin and Jetpack Compose, to build a frontend on the web. You are required to use the kobweb framework, otherwise it won't work. At the moment, components are not yet fully customizable, but I'll work on it. ⚽ The goal is to release all bootstrap components, and only then work on it's customization furthermore. Silk UI layer which is included with Kobweb is not required for this library to work.
 </p>
 
 ## Available Components
@@ -36,7 +36,7 @@
 - [ColorPicker](#colorpicker)
 - [FilePicker](#filepicker)
 
-## Usage
+## Install
 Update a Project level `build.gradle.kts` file:
 
 ```gradle
@@ -72,7 +72,7 @@ kotlin {
         val jsMain by getting {
             dependencies {
                 ..
-                implementation("com.github.stevdza-san:KotlinBootstrap:0.0.1")
+                implementation("com.github.stevdza-san:KotlinBootstrap:0.0.2")
             }
         }
     }
@@ -147,8 +147,8 @@ BSInput(
 BSInput(
     value = inputValue,
     label = "Email Address",
-    onValueChange = {},
-    floating = true
+    floating = true,
+    onValueChange = {}
 )
 ```
 
@@ -159,10 +159,10 @@ BSInput(
     value = inputValue,
     label = "Email Address",
     placeholder = "Type here",
-    onValueChange = {},
     validation = InputValidation(
       isValid = true
-    )
+    ),
+    onValueChange = {}
 )
 ```
 
@@ -173,10 +173,10 @@ BSInput(
     value = inputValue,
     label = "Email Address",
     placeholder = "Type here",
-    onValueChange = {},
     validation = InputValidation(
       isInvalid = true
-    )
+    ),
+    onValueChange = {}
 )
 ```
 
@@ -187,8 +187,8 @@ BSInput(
     value = inputValue,
     label = "Email Address",
     placeholder = "Type here",
-    onValueChange = {},
-    disabled = true
+    disabled = true,
+    onValueChange = {}
 )
 ```
 
