@@ -47,7 +47,7 @@ fun BSPagination(
     }
     val numberOfPages = remember(pages) { if (pages > 1) 1..pages else 1..2 }
     val numberOfMaxVisiblePages = remember(maxVisiblePages) { if (maxVisiblePages < 2) 2 else maxVisiblePages }
-    val currentPageInternal = remember(currentPage, pages) {
+    val currentPageInternal = remember(currentPage) {
         if (currentPage <= numberOfPages.last
             && currentPage >= numberOfPages.first
         ) currentPage

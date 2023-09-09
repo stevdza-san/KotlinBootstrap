@@ -71,7 +71,7 @@ fun BSSelect(
             }
         }
     } else {
-        Div {
+        Div(attrs = modifier.toAttrs()) {
             BSSelectInternal(
                 modifier = modifier,
                 id = randomId,
