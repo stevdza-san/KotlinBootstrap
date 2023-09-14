@@ -23,7 +23,7 @@ import org.jetbrains.compose.web.dom.Button
  * @param icon An object [BSIcons] which is used to specify an icon.
  * @param size The overall size of the button.
  * @param variant This one is used to stylize your button with a different color.
- * @param radius The radius level of the button corners.
+ * @param borderRadius The radius level of the button corners.
  * @param disabled Whether a button is clickable or not.
  * @param badge Small badge or label, providing additional information or indicating
  * a specific status or count associated with the button.
@@ -36,7 +36,7 @@ fun BSIconButton(
     icon: String = BSIcons.CHECK,
     size: ButtonSize = ButtonSize.Default,
     variant: ButtonVariant = ButtonVariant.Primary,
-    radius: BSBorderRadius? = null,
+    borderRadius: BSBorderRadius? = null,
     disabled: Boolean = false,
     badge: ButtonBadge? = null,
     onClick: () -> Unit
@@ -49,13 +49,13 @@ fun BSIconButton(
             .id(randomId)
             .classNames(*variant.classes.toTypedArray(), size.value)
             .thenIf(
-                condition = radius != null,
-                other = radius?.let {
+                condition = borderRadius != null,
+                other = borderRadius?.let {
                     Modifier.borderRadius(
                         topLeft = it.topLeft,
-                        topRight = radius.topRight,
-                        bottomRight = radius.bottomRight,
-                        bottomLeft = radius.bottomLeft
+                        topRight = borderRadius.topRight,
+                        bottomRight = borderRadius.bottomRight,
+                        bottomLeft = borderRadius.bottomLeft
                     )
                 } ?: Modifier
             )
