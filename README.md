@@ -37,8 +37,8 @@
 - [FilePicker](#filepicker)
 - [Pagination](#pagination)
 
-## Icons
-- [Bootstrap Icons usage](#icons)
+## Bootstrap Icons usage
+- [Icons](#icons)
 
 ## Install
 Update a Project level `build.gradle.kts` file:
