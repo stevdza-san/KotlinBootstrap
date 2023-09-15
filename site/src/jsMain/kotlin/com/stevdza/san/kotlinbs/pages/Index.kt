@@ -28,20 +28,6 @@ fun HomePage() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         BSButton(
-            borderRadius = BSBorderRadius(all = 999.px),
-            text = "Upload",
-            onClick = {}
-        )
-        BSButton(
-            text = "Click me",
-            size = ButtonSize.Small,
-            customization = ButtonCustomization(
-                color = rgb(255, 255, 255),
-                backgroundColor = rgb(0, 0, 0)
-            ),
-            onClick = {}
-        )
-        BSButton(
             modifier = Modifier.margin(topBottom = 20.px),
             text = "Click me",
             customization = ButtonCustomization(
