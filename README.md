@@ -1009,9 +1009,18 @@ BSPagination(
 ```
 
 ## Icons
-There are over 2.000 icons available in a Bootstrap library. You can use a `BSIcons` object to access all icons. There's a `BSIcon` composable function that allows you to display those same icons as well.
+There are over 2.000 icons available in a Bootstrap library. You can use a `BSIcons` object to access all icons. There's a `BSIcon` composable function that allows you to display those same icons as well. There's also a `BSIconButton` composable that displays an icon inside the button.
 
 Example *(Zoomed in)* icon, that represents one of the many vector icons in the library:
+
+```kotlin
+BSIcon(
+  icon = BSIcons.ANDROID,
+  size = 1.cssRem,
+  color = Colors.LightGreen
+)
+```
+
 <p>
   <img src="/ASSETS/androidIcon.png" alt="Android Icon Preview">
 </p> 
