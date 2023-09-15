@@ -37,6 +37,9 @@
 - [FilePicker](#filepicker)
 - [Pagination](#pagination)
 
+## Icons
+- [Bootstrap Icons usage](#icons)
+
 ## Install
 Update a Project level `build.gradle.kts` file:
 
@@ -61,6 +64,11 @@ kobweb {
                     rel = "stylesheet"
                     href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
                 }
+                // Optional, if you want to use Bootstrap Icons [BSIcons].
+                link {
+                    rel = "stylesheet"
+                    href = "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+                }
             }
         }
     }
@@ -73,7 +81,7 @@ kotlin {
         val jsMain by getting {
             dependencies {
                 ..
-                implementation("com.github.stevdza-san:KotlinBootstrap:0.0.3")
+                implementation("com.github.stevdza-san:KotlinBootstrap:0.0.4")
             }
         }
     }
@@ -999,3 +1007,11 @@ BSPagination(
     onPageClick = { currentPage = it }
 )
 ```
+
+## Icons
+There are over 2.000 icons available in a Bootstrap library. You can use a [BSIcons] object to access all icons. There's a [BSIcon] composable function that allows you to display those same icons as well.
+
+Example (Zoomed in) icon, that represents one of the many vector icons in the library:
+<p>
+  <img src="/ASSETS/androidIcon.png" alt="Android Icon Preview">
+</p> 
