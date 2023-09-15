@@ -11,6 +11,7 @@
 
 ## Available Components
 - [Button](#button)
+- [IconButton](#iconbutton)
 - [Input](#input)
 - [Dropdown](#dropdown)
 - [TextArea](#textarea)
@@ -132,9 +133,109 @@ BSButton(
 )
 ```
 
+<p>Buttons with custom properties.</p>
+
+<p>
+  <img src="/ASSETS/custombuttons.gif?raw=true" alt="CustomButtons Preview" width="812">
+</p> 
+
+```kotlin
+Column(modifier = Modifier.gap(20.px).fillMaxSize()) {
+    Row(modifier = Modifier.gap(12.px)) {
+        BSButton(
+            text = "Apply Now",
+            customization = ButtonCustomization(
+                color = Colors.White,
+                hoverColor = Colors.White,
+                backgroundColor = Colors.Black,
+                hoverBackgroundColor = rgba(0, 0, 0, 0.8),
+                fontFamily = "Space Grotesk"
+            ),
+            onClick = {}
+        )
+        BSButton(
+            text = "Get Started",
+            customization = ButtonCustomization(
+                color = Colors.White,
+                hoverColor = Colors.White,
+                activeColor = Colors.WhiteSmoke,
+                borderColor = Colors.White,
+                hoverBorderColor = Colors.White,
+                activeBorderColor = rgb(168, 192, 255),
+                gradient = linearGradient(
+                    from = rgb(168, 192, 255),
+                    to = rgb(63, 43, 150),
+                    dir = LinearGradient.Direction.ToTopRight
+                ),
+                borderRadius = BSBorderRadius(all = 50.px),
+                horizontalPadding = 1.25.cssRem
+            ),
+            onClick = {}
+        )
+    }
+    Row(modifier = Modifier.gap(12.px)) {
+        BSButton(
+            text = "Submit",
+            customization = ButtonCustomization(
+                color = Colors.White,
+                hoverColor = Colors.Wheat,
+                activeColor = Colors.White,
+                borderColor = Colors.White,
+                hoverBorderColor = Colors.Wheat,
+                activeBorderColor = Colors.White,
+                gradient = linearGradient(
+                    from = rgb(188, 78, 156),
+                    to = rgb(248, 7, 89),
+                    dir = LinearGradient.Direction.ToTopRight
+                ),
+                borderRadius = BSBorderRadius(topLeft = 20.px, bottomRight = 20.px),
+                fontFamily = "Rubik"
+            ),
+            onClick = {}
+        )
+    }
+}
+```
+
+## IconButton
+<p>
+  <img src="/ASSETS/iconbutton.gif?raw=true" alt="IconButtons Preview">
+</p> 
+
+`BSIconButton` is a component used to display a Bootstrap Icon (`BSIcons`) inside a button. You can customize similar properties like with a regular `BSButton` as well.
+A basic usage:
+
+```kotlin
+Column(modifier = Modifier.gap(20.px).fillMaxSize()) {
+    Row(modifier = Modifier.gap(12.px)) {
+        BSIconButton(
+            icon = BSIcons.UPLOAD,
+            onClick = {}
+        )
+        BSIconButton(
+            icon = BSIcons.UPLOAD,
+            variant = ButtonVariant.PrimaryOutline,
+            onClick = {}
+        )
+    }
+    Row(modifier = Modifier.gap(12.px)) {
+        BSIconButton(
+            icon = BSIcons.ANDROID,
+            variant = ButtonVariant.Success,
+            onClick = {}
+        )
+        BSIconButton(
+            icon = BSIcons.ANDROID,
+            variant = ButtonVariant.SuccessOutline,
+            onClick = {}
+        )
+    }
+}
+```
+
 ## Input
 <p>
-  <img src="/ASSETS/inputs.gif" alt="Inputs Preview" width="360">
+  <img src="/ASSETS/inputs.gif?raw=true" alt="Inputs Preview" width="360">
 </p> 
 
 <p>A simple usage with a placeholder:</p>
