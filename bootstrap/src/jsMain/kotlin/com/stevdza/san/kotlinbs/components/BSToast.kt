@@ -2,6 +2,8 @@ package com.stevdza.san.kotlinbs.components
 
 import androidx.compose.runtime.Composable
 import com.stevdza.san.kotlinbs.models.*
+import com.stevdza.san.kotlinbs.models.button.ButtonSize
+import com.stevdza.san.kotlinbs.models.button.ButtonVariant
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Row

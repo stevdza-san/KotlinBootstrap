@@ -1,4 +1,4 @@
-package com.stevdza.san.kotlinbs.models
+package com.stevdza.san.kotlinbs.models.button
 
 enum class ButtonSize(val value: String) {
     Default(value = "btn"),

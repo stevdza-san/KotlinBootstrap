@@ -2,8 +2,8 @@ package com.stevdza.san.kotlinbs.forms
 
 import androidx.compose.runtime.*
 import com.stevdza.san.kotlinbs.components.BSButton
-import com.stevdza.san.kotlinbs.models.ButtonSize
-import com.stevdza.san.kotlinbs.models.ButtonVariant
+import com.stevdza.san.kotlinbs.models.button.ButtonSize
+import com.stevdza.san.kotlinbs.models.button.ButtonVariant
 import com.stevdza.san.kotlinbs.models.InputSize
 import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.css.Overflow

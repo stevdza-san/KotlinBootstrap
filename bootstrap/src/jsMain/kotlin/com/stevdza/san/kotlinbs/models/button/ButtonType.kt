@@ -1,4 +1,4 @@
-package com.stevdza.san.kotlinbs.models
+package com.stevdza.san.kotlinbs.models.button
 
 enum class ButtonType(val value: String) {
     Button(value = "button"),

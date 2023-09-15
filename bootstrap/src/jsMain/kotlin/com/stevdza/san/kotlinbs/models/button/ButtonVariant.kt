@@ -1,4 +1,4 @@
-package com.stevdza.san.kotlinbs.models
+package com.stevdza.san.kotlinbs.models.button
 
 enum class ButtonVariant(val classes: List<String>) {
     Primary(classes = listOf("btn", "btn-primary")),

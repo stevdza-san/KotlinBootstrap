@@ -3,9 +3,10 @@ package com.stevdza.san.kotlinbs.components
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import com.stevdza.san.kotlinbs.icons.BSIcons
-import com.stevdza.san.kotlinbs.models.ButtonBadge
-import com.stevdza.san.kotlinbs.models.ButtonSize
-import com.stevdza.san.kotlinbs.models.ButtonVariant
+import com.stevdza.san.kotlinbs.models.BSBorderRadius
+import com.stevdza.san.kotlinbs.models.button.ButtonBadge
+import com.stevdza.san.kotlinbs.models.button.ButtonSize
+import com.stevdza.san.kotlinbs.models.button.ButtonVariant
 import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
@@ -53,9 +54,9 @@ fun BSIconButton(
                 other = borderRadius?.let {
                     Modifier.borderRadius(
                         topLeft = it.topLeft,
-                        topRight = borderRadius.topRight,
-                        bottomRight = borderRadius.bottomRight,
-                        bottomLeft = borderRadius.bottomLeft
+                        topRight = it.topRight,
+                        bottomRight = it.bottomRight,
+                        bottomLeft = it.bottomLeft
                     )
                 } ?: Modifier
             )

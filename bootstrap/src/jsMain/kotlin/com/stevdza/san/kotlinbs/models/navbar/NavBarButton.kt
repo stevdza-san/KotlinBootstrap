@@ -1,7 +1,7 @@
 package com.stevdza.san.kotlinbs.models.navbar
 
-import com.stevdza.san.kotlinbs.models.ButtonBadge
-import com.stevdza.san.kotlinbs.models.ButtonVariant
+import com.stevdza.san.kotlinbs.models.button.ButtonBadge
+import com.stevdza.san.kotlinbs.models.button.ButtonVariant
 
 data class NavBarButton(
     val id: String? = null,

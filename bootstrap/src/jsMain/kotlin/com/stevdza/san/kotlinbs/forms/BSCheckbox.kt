@@ -2,7 +2,7 @@ package com.stevdza.san.kotlinbs.forms
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import com.stevdza.san.kotlinbs.models.ButtonVariant
+import com.stevdza.san.kotlinbs.models.button.ButtonVariant
 import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames

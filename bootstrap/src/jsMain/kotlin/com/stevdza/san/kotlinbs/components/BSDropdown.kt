@@ -1,8 +1,8 @@
 package com.stevdza.san.kotlinbs.components
 
 import androidx.compose.runtime.*
-import com.stevdza.san.kotlinbs.models.ButtonSize
-import com.stevdza.san.kotlinbs.models.ButtonVariant
+import com.stevdza.san.kotlinbs.models.button.ButtonSize
+import com.stevdza.san.kotlinbs.models.button.ButtonVariant
 import com.stevdza.san.kotlinbs.models.DropdownDirection
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.ui.Modifier
