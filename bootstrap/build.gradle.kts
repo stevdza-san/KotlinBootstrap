@@ -26,7 +26,6 @@ kotlin {
                 implementation(compose.html.core)
                 implementation(libs.kobweb.core)
                 implementation(libs.kobweb.compose)
-                implementation(npm("is-sorted", "1.0.5"))
                 implementation(npm("bootstrap", "5.3.1"))
             }
         }
