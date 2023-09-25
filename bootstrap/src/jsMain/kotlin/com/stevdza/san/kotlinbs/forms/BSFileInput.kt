@@ -2,9 +2,10 @@ package com.stevdza.san.kotlinbs.forms
 
 import androidx.compose.runtime.*
 import com.stevdza.san.kotlinbs.components.BSButton
+import com.stevdza.san.kotlinbs.components.SpanText
+import com.stevdza.san.kotlinbs.models.InputSize
 import com.stevdza.san.kotlinbs.models.button.ButtonSize
 import com.stevdza.san.kotlinbs.models.button.ButtonVariant
-import com.stevdza.san.kotlinbs.models.InputSize
 import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.TextOverflow
@@ -13,11 +14,10 @@ import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.graphics.Color
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.silk.components.text.SpanText
-import com.varabyte.kobweb.silk.theme.colors.ColorSchemes
 import kotlinx.browser.document
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
@@ -73,7 +73,8 @@ fun BSFileInput(
                 .id(randomId)
                 .thenIf(
                     condition = disabled,
-                    other = Modifier.backgroundColor(ColorSchemes.Gray._50)
+                    // TODO: Will this color get used anywhere? Should we extract it into a constant?
+                    other = Modifier.backgroundColor(Color.rgb(0xFAFAFA))
                 )
                 .border(
                     width = 1.px,

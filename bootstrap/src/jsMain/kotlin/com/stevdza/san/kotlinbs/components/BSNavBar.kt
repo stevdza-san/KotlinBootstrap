@@ -9,8 +9,6 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.*
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.silk.components.graphics.Image
-import com.varabyte.kobweb.silk.components.text.SpanText
 import org.jetbrains.compose.web.css.CSSNumeric
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.*
@@ -93,16 +91,14 @@ fun BSNavBar(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         if (brand.image != null) {
-                            Image(
-                                modifier = Modifier
+                            Img(
+                                src = brand.image,
+                                alt = "Brand Logo",
+                                attrs = Modifier
                                     .width(brand.imageWidth)
                                     .margin(right = 8.px)
                                     .classNames("d-inline-block", "align-text-top")
-                                    .attrsModifier {
-                                        attr("alt", "logo")
-                                    },
-                                src = brand.image,
-                                desc = "Brand Logo"
+                                    .toAttrs()
                             )
                         }
                         SpanText(brand.title)

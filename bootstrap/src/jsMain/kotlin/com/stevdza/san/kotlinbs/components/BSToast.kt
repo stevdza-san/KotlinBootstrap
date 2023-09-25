@@ -9,7 +9,6 @@ import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.*
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.silk.components.text.SpanText
 import kotlinx.browser.document
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
