@@ -24,9 +24,7 @@ kotlin {
         val jsMain by getting {
             dependencies {
                 implementation(compose.html.core)
-                implementation(libs.kobweb.core)
                 implementation(libs.kobweb.compose)
-                implementation(npm("is-sorted", "1.0.5"))
                 implementation(npm("bootstrap", "5.3.1"))
             }
         }
@@ -39,7 +37,7 @@ publishing {
             from(components["kotlin"])
             groupId = "com.github.stevdza-san"
             artifactId = "KotlinBootstrap"
-            version = "0.0.5"
+            version = "0.0.6"
         }
     }
 }
