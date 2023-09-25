@@ -8,7 +8,6 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.silk.components.text.SpanText
 import org.jetbrains.compose.web.css.CSSNumeric
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Span

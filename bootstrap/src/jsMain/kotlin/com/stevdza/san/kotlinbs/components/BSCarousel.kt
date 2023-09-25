@@ -10,7 +10,6 @@ import com.varabyte.kobweb.compose.ui.attrsModifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.silk.components.graphics.Image
 import org.jetbrains.compose.web.css.CSSNumeric
 import org.jetbrains.compose.web.dom.*
 
@@ -115,13 +114,14 @@ fun BSCarousel(
                         )
                         .toAttrs()
                 ) {
-                    Image(
-                        modifier = Modifier
+                    Img(
+                        src = it.image,
+                        alt = "Carousel Image",
+                        attrs = Modifier
                             .fillMaxSize()
                             .objectFit(objectFit)
-                            .classNames("d-block", "w-100"),
-                        src = it.image,
-                        desc = "Carousel Image"
+                            .classNames("d-block", "w-100")
+                            .toAttrs(),
                     )
                     if (it.title != null || it.body != null) {
                         Div(
