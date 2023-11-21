@@ -3,10 +3,19 @@ package com.stevdza.san.kotlinbs.components
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import com.stevdza.san.kotlinbs.models.BSBorderRadius
-import com.stevdza.san.kotlinbs.models.button.*
+import com.stevdza.san.kotlinbs.models.button.ButtonBadge
+import com.stevdza.san.kotlinbs.models.button.ButtonCustomization
+import com.stevdza.san.kotlinbs.models.button.ButtonProperty
+import com.stevdza.san.kotlinbs.models.button.ButtonSize
+import com.stevdza.san.kotlinbs.models.button.ButtonType
+import com.stevdza.san.kotlinbs.models.button.ButtonVariant
 import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
+import com.varabyte.kobweb.compose.ui.modifiers.classNames
+import com.varabyte.kobweb.compose.ui.modifiers.id
+import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -41,6 +50,7 @@ import org.jetbrains.compose.web.dom.Text
  * state of the button changes to true.
  * @param badge Small badge or label, providing additional information or indicating
  * a specific status or count associated with the button.
+ * @param icon Use 'BSIcons' object to choose one of many bootstrap icons inside the button.
  * @param onClick Lambda which is triggered everytime a user clicks on a button.
  * */
 @Composable
@@ -57,6 +67,7 @@ fun BSButton(
     loading: Boolean = false,
     loadingText: String? = null,
     badge: ButtonBadge? = null,
+    icon: String? = null,
     onClick: () -> Unit
 ) {
     val randomId = remember {
@@ -175,7 +186,15 @@ fun BSButton(
                 }
             }
         } else {
-            SpanText(text = text)
+            if (icon != null) {
+                BSIcon(
+                    modifier = Modifier.margin(right = 8.px),
+                    icon = icon
+                )
+                SpanText(text = text)
+            } else {
+                SpanText(text = text)
+            }
         }
     }
 }

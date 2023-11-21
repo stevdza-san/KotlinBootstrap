@@ -1,4 +1,6 @@
 import com.varabyte.kobweb.gradle.library.util.configAsKobwebLibrary
+import kotlinx.html.link
+import kotlinx.html.script
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -13,7 +15,6 @@ version = "0.0.1"
 kotlin {
     configAsKobwebLibrary(includeServer = false)
 
-    @Suppress("UNUSED_VARIABLE")
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -31,13 +32,33 @@ kotlin {
     }
 }
 
+kobweb {
+    library {
+        index {
+            head.add {
+                script {
+                    src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+                }
+                link {
+                    rel = "stylesheet"
+                    href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+                }
+                link {
+                    rel = "stylesheet"
+                    href = "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+                }
+            }
+        }
+    }
+}
+
 publishing {
     publications {
         register("mavenJsLibrary", MavenPublication::class) {
             from(components["kotlin"])
             groupId = "com.github.stevdza-san"
             artifactId = "KotlinBootstrap"
-            version = "0.0.6"
+            version = "0.0.7"
         }
     }
 }

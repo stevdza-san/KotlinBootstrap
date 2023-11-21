@@ -1,9 +1,9 @@
 package com.stevdza.san.kotlinbs.components
 
 import androidx.compose.runtime.*
+import com.stevdza.san.kotlinbs.models.DropdownDirection
 import com.stevdza.san.kotlinbs.models.button.ButtonSize
 import com.stevdza.san.kotlinbs.models.button.ButtonVariant
-import com.stevdza.san.kotlinbs.models.DropdownDirection
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
@@ -18,6 +18,8 @@ import org.jetbrains.compose.web.dom.*
  * toggled to appear or disappear when triggered by user interaction. It provides a dropdown
  * menu that can contain other interactive elements.
  * @param items List of one or multiple strings that should be displayed within the dropdown.
+ * @param selectedItem Item which is marked as selected in the drop-down, by default that's
+ * a first item from the [items] list.
  * @param disabledItems List of one or multiple string items that should be displayed as
  * disabled within the dropdown.
  * @param style The style of the dropdown button.
@@ -32,6 +34,7 @@ import org.jetbrains.compose.web.dom.*
 fun BSDropdown(
     modifier: Modifier = Modifier,
     items: List<String>,
+    selectedItem: String = items.first(),
     placeholder: String? = null,
     disabledItems: List<String>? = null,
     style: ButtonVariant = ButtonVariant.Primary,
@@ -41,7 +44,7 @@ fun BSDropdown(
     darkBackground: Boolean = false,
     onItemSelect: (Int, String) -> Unit
 ) {
-    var selectedItem by remember { mutableStateOf(items.first()) }
+    var selectedItemInternal by remember { mutableStateOf(selectedItem) }
     var isSelected by remember { mutableStateOf(false) }
     Div(
         attrs = modifier
@@ -88,8 +91,8 @@ fun BSDropdown(
         ) {
             SpanText(
                 if (placeholder != null) {
-                    if (isSelected) selectedItem else placeholder
-                } else selectedItem
+                    if (isSelected) selectedItemInternal else placeholder
+                } else selectedItemInternal
             )
         }
         if (splitToggleButton && direction != DropdownDirection.Left) {
@@ -126,7 +129,7 @@ fun BSDropdown(
                     attrs = Modifier
                         .onClick {
                             if (!isDisabled) {
-                                selectedItem = items[index]
+                                selectedItemInternal = items[index]
                                 onItemSelect(index, items[index])
                                 isSelected = true
                             }
@@ -138,7 +141,7 @@ fun BSDropdown(
                         attrs = Modifier
                             .classNames("dropdown-item")
                             .thenIf(
-                                condition = isSelected && selectedItem == items[index],
+                                condition = selectedItemInternal == items[index] && (placeholder == null || isSelected),
                                 other = Modifier.classNames("active")
                             )
                             .thenIf(
