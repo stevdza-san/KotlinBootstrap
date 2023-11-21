@@ -44,7 +44,7 @@ fun BSDropdown(
     darkBackground: Boolean = false,
     onItemSelect: (Int, String) -> Unit
 ) {
-    var selectedItemInternal by remember { mutableStateOf(selectedItem) }
+    var selectedItemInternal by remember(key1 = selectedItem) { mutableStateOf(selectedItem) }
     var isSelected by remember { mutableStateOf(false) }
     Div(
         attrs = modifier

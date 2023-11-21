@@ -1,6 +1,6 @@
 package com.stevdza.san.kotlinbs.pages
 
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import com.stevdza.san.kotlinbs.components.BSButton
 import com.stevdza.san.kotlinbs.components.BSDropdown
 import com.stevdza.san.kotlinbs.icons.BSIcons
@@ -14,6 +14,7 @@ import com.varabyte.kobweb.core.Page
 @Page
 @Composable
 fun HomePage() {
+    var selectedItem by remember { mutableStateOf("Two") }
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -22,14 +23,15 @@ fun HomePage() {
         BSButton(
             text = "Click me",
             icon = BSIcons.TRASH,
-            onClick = { println("Clicked") }
+            onClick = { selectedItem = "Three" }
         )
         BSDropdown(
             items = listOf("One", "Two", "Three"),
-            selectedItem = "Two",
+            selectedItem = selectedItem,
             placeholder = "Stevdza",
             onItemSelect = { index, item ->
                 println("Item: $item at position: $index")
+                selectedItem = item
             }
         )
     }
