@@ -82,7 +82,7 @@ kotlin {
         val jsMain by getting {
             dependencies {
                 ..
-                implementation("com.github.stevdza-san:KotlinBootstrap:0.0.5")
+                implementation("com.github.stevdza-san:KotlinBootstrap:0.0.6")
             }
         }
     }
