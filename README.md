@@ -54,6 +54,27 @@ repositories {
 Update a `site` module `build.gradle.kts` file:
 
 ```gradle
+kobweb {
+    app {
+        index {
+            head.add {
+                script {
+                    src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+                }
+                link {
+                    rel = "stylesheet"
+                    href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+                }
+                // Optional, if you want to use Bootstrap Icons [BSIcons].
+                link {
+                    rel = "stylesheet"
+                    href = "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+                }
+            }
+        }
+    }
+}
+
 kotlin {
     @Suppress("UNUSED_VARIABLE") 
     sourceSets {
