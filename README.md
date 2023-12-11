@@ -54,8 +54,7 @@ repositories {
 Update a `site` module `build.gradle.kts` file:
 
 ```gradle
-kotlin {
-    @Suppress("UNUSED_VARIABLE") 
+kotlin { 
     sourceSets {
         ..
         val jsMain by getting {
