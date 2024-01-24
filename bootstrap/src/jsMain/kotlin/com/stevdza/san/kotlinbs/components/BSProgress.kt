@@ -2,6 +2,7 @@ package com.stevdza.san.kotlinbs.components
 
 import androidx.compose.runtime.Composable
 import com.stevdza.san.kotlinbs.models.BackgroundStyle
+import com.varabyte.kobweb.compose.css.CSSLengthOrPercentageNumericValue
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
@@ -29,8 +30,8 @@ fun BSProgress(
     modifier: Modifier = Modifier.fillMaxWidth(),
     label: String? = null,
     percentage: CSSSizeValue<CSSUnit.percent> = 50.percent,
-    height: CSSNumeric = 20.px,
-    width: CSSNumeric = 300.px,
+    height: CSSLengthOrPercentageNumericValue = 20.px,
+    width: CSSLengthOrPercentageNumericValue = 300.px,
     style: BackgroundStyle = BackgroundStyle.Primary,
     striped: Boolean = false,
     stripedAnimated: Boolean = false

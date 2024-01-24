@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import com.stevdza.san.kotlinbs.icons.BSIcons
 import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
+import com.varabyte.kobweb.compose.css.CSSLengthOrPercentageNumericValue
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.classNames
 import com.varabyte.kobweb.compose.ui.modifiers.color
@@ -12,7 +13,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.id
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
 import org.jetbrains.compose.web.css.CSSColorValue
-import org.jetbrains.compose.web.css.CSSNumeric
 import org.jetbrains.compose.web.dom.I
 
 /**
@@ -27,7 +27,7 @@ fun BSIcon(
     modifier: Modifier = Modifier,
     id: String? = null,
     icon: String = BSIcons.CHECK,
-    size: CSSNumeric? = null,
+    size: CSSLengthOrPercentageNumericValue? = null,
     color: CSSColorValue? = null
 ) {
     val randomId = remember {

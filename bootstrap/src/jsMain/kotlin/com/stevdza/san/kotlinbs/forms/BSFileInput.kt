@@ -7,9 +7,9 @@ import com.stevdza.san.kotlinbs.models.InputSize
 import com.stevdza.san.kotlinbs.models.button.ButtonSize
 import com.stevdza.san.kotlinbs.models.button.ButtonVariant
 import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
+import com.varabyte.kobweb.browser.file.loadDataUrlFromDisk
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.TextOverflow
-import com.varabyte.kobweb.compose.file.loadDataUrlFromDisk
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -86,7 +86,7 @@ fun BSFileInput(
                     if (!disabled) {
                         document.loadDataUrlFromDisk(
                             accept = accept,
-                            onLoaded = {
+                            onLoad = {
                                 onFileSelected(filename, it)
                                 placeholderText = filename
                             }

@@ -3,12 +3,12 @@ package com.stevdza.san.kotlinbs.components
 import androidx.compose.runtime.Composable
 import com.stevdza.san.kotlinbs.models.BackgroundStyle
 import com.stevdza.san.kotlinbs.models.BadgeVariant
+import com.varabyte.kobweb.compose.css.CSSLengthOrPercentageNumericValue
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
-import org.jetbrains.compose.web.css.CSSNumeric
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Span
 
@@ -28,7 +28,7 @@ fun BSBadge(
     modifier: Modifier = Modifier,
     text: String,
     fontFamily: String? = null,
-    fontSize: CSSNumeric? = null,
+    fontSize: CSSLengthOrPercentageNumericValue? = null,
     fontWeight: FontWeight? = null,
     style: BackgroundStyle = BackgroundStyle.Primary,
     variant: BadgeVariant = BadgeVariant.Regular

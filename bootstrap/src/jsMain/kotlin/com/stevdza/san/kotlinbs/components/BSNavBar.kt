@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import com.stevdza.san.kotlinbs.forms.BSInput
 import com.stevdza.san.kotlinbs.models.BackgroundStyle
 import com.stevdza.san.kotlinbs.models.navbar.*
+import com.varabyte.kobweb.compose.css.CSSLengthOrPercentageNumericValue
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -50,7 +51,7 @@ fun BSNavBar(
     button: NavBarButton? = null,
     offcanvas: NavBarOffcanvas? = null,
     expand: NavBarExpand = NavBarExpand.LG,
-    horizontalPadding: CSSNumeric = 8.px,
+    horizontalPadding: CSSLengthOrPercentageNumericValue = 8.px,
     backgroundStyle: BackgroundStyle = BackgroundStyle.Light
 ) {
     Nav(
