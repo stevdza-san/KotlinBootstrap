@@ -4,13 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import com.stevdza.san.kotlinbs.models.CarouselItem
 import com.stevdza.san.kotlinbs.util.UniqueIdGenerator
+import com.varabyte.kobweb.compose.css.CSSLengthOrPercentageNumericValue
 import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.attrsModifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
-import org.jetbrains.compose.web.css.CSSNumeric
 import org.jetbrains.compose.web.dom.*
 
 /**
@@ -41,8 +41,8 @@ fun BSCarousel(
     modifier: Modifier = Modifier,
     id: String? = null,
     items: List<CarouselItem>,
-    width: CSSNumeric,
-    height: CSSNumeric,
+    width: CSSLengthOrPercentageNumericValue,
+    height: CSSLengthOrPercentageNumericValue,
     showControls: Boolean = true,
     showIndicators: Boolean = true,
     crossFade: Boolean = false,
