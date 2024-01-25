@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "com.stevdza.san.bootstrap"
-version = "0.0.1"
+version = "0.0.8"
 
 kotlin {
     configAsKobwebLibrary(includeServer = false)
@@ -58,7 +58,7 @@ publishing {
             from(components["kotlin"])
             groupId = "com.github.stevdza-san"
             artifactId = "KotlinBootstrap"
-            version = "0.0.8"
+            version = version
         }
     }
 }
