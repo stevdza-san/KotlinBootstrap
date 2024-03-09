@@ -1,38 +1,33 @@
 package com.stevdza.san.kotlinbs.pages
 
-import androidx.compose.runtime.*
-import com.stevdza.san.kotlinbs.components.BSButton
-import com.stevdza.san.kotlinbs.components.BSDropdown
-import com.stevdza.san.kotlinbs.icons.BSIcons
-import com.varabyte.kobweb.compose.foundation.layout.Arrangement
-import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.ui.Alignment
-import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
+import androidx.compose.runtime.Composable
+import com.stevdza.san.kotlinbs.components.BSCarousel
+import com.stevdza.san.kotlinbs.models.CarouselItem
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.core.Page
+import org.jetbrains.compose.web.css.px
 
 @Page
 @Composable
 fun HomePage() {
-    var selectedItem by remember { mutableStateOf("Two") }
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        BSButton(
-            text = "Click me",
-            icon = BSIcons.TRASH,
-            onClick = { selectedItem = "Three" }
-        )
-        BSDropdown(
-            items = listOf("One", "Two", "Three"),
-            selectedItem = selectedItem,
-            placeholder = "Stevdza",
-            onItemSelect = { index, item ->
-                println("Item: $item at position: $index")
-                selectedItem = item
-            }
+    Box {
+        BSCarousel(
+            items = listOf(
+                CarouselItem(
+                    image = "https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    title = "Moraine Lake"
+                ),
+                CarouselItem(
+                    image = "https://images.pexels.com/photos/147411/italy-mountains-dawn-daybreak-147411.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    title = "Italy"
+                ),
+                CarouselItem(
+                    image = "https://images.pexels.com/photos/1166209/pexels-photo-1166209.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    title = "Lavender"
+                ),
+            ),
+            width = 900.px,
+            height = 500.px
         )
     }
 }
