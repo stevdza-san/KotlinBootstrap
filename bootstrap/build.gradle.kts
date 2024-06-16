@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "com.stevdza.san.bootstrap"
-version = "0.1.1"
+version = "0.1.2"
 
 kotlin {
     configAsKobwebLibrary(includeServer = false)
