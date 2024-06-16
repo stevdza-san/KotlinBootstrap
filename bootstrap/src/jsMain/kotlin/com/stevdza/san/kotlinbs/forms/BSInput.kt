@@ -36,7 +36,9 @@ import org.jetbrains.compose.web.dom.Text
  * @param validation Here you can customize the look of the input component, in two
  * different states: Success and Error.
  * @param value A default value that will be included inside the input.
- * @param onValueChange Lambda that will be triggered when a user types something
+ * @param onValueChange Lambda that will be triggered when a user types something.
+ * @param onEnterClick Lambda that triggers when you press 'Enter' key on your keyword,
+ * while the input component is focused.
  * inside the component.
  * */
 @Composable
@@ -98,7 +100,7 @@ fun BSInput(
                 .toAttrs {
                     value(value)
                     onInput { onValueChange(it.value) }
-                    onKeyDown {
+                    onKeyUp {
                         if (onEnterClick != null) {
                             it.preventDefault()
                             if (it.key == "Enter") {
