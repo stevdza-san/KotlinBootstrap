@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.kobweb.application)
+    alias(libs.plugins.kotlin.compose)
 }
 
 group = "com.stevdza.san.kotlinbs"

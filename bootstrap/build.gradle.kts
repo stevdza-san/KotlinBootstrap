@@ -6,11 +6,12 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.kobweb.library)
+    alias(libs.plugins.kotlin.compose)
     `maven-publish`
 }
 
 group = "com.stevdza.san.bootstrap"
-version = "0.1.3"
+version = "0.1.5"
 
 kotlin {
     configAsKobwebLibrary(includeServer = false)

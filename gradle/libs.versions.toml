@@ -1,7 +1,7 @@
 [versions]
-jetbrains-compose = "1.6.2"
-kobweb = "0.18.0"
-kotlin = "1.9.23"
+jetbrains-compose = "1.6.11"
+kobweb = "0.19.0"
+kotlin = "2.0.10"
 
 [libraries]
 kobweb-api = { module = "com.varabyte.kobweb:kobweb-api", version.ref = "kobweb" }
@@ -17,3 +17,4 @@ kobweb-application = { id = "com.varabyte.kobweb.application", version.ref = "ko
 kobwebx-markdown = { id = "com.varabyte.kobwebx.markdown", version.ref = "kobweb" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kobweb-library = { id = "com.varabyte.kobweb.library", version.ref = "kobweb" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

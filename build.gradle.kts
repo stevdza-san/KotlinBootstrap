@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kobweb.application) apply false
     alias(libs.plugins.kobweb.library) apply false
     alias(libs.plugins.kobwebx.markdown) apply false
+    alias(libs.plugins.kotlin.compose) apply false
 }
 
 subprojects {

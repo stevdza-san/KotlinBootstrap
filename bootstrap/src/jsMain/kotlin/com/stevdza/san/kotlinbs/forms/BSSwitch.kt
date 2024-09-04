@@ -21,7 +21,7 @@ import org.w3c.dom.HTMLInputElement
  * appealing toggle button that can be toggled between two states.
  * @param id Unique identifier of the component.
  * @param label The label of this component.
- * @param defaultChecked Whether this switch should be checked by default.
+ * @param checked Whether this switch is checked or not.
  * @param disabled Whether this switch should be disabled or not.
  * @param onClick Lambda that is triggered when a user clicks the switch. It holds the
  * boolean value that represents a checked state.
@@ -31,7 +31,7 @@ fun BSSwitch(
     modifier: Modifier = Modifier,
     id: String? = null,
     label: String,
-    defaultChecked: Boolean = false,
+    checked: Boolean = false,
     disabled: Boolean = false,
     onClick: (Boolean) -> Unit
 ) {
@@ -49,7 +49,7 @@ fun BSSwitch(
                 .classNames("form-check-input")
                 .toAttrs {
                     attr("role", "switch")
-                    if (defaultChecked) defaultChecked()
+                    this@toAttrs.checked(checked)
                     if (disabled) disabled()
                     onClick {
                         onClick((document.getElementById(randomId) as HTMLInputElement).checked)
