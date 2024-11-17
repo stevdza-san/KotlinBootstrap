@@ -2,7 +2,9 @@ package com.stevdza.san.kotlinbs.components
 
 import androidx.compose.runtime.Composable
 import com.stevdza.san.kotlinbs.forms.BSInput
+import com.stevdza.san.kotlinbs.layouts.BSContainer
 import com.stevdza.san.kotlinbs.models.BackgroundStyle
+import com.stevdza.san.kotlinbs.models.container.ContainerBehavior
 import com.stevdza.san.kotlinbs.models.navbar.*
 import com.varabyte.kobweb.compose.css.CSSLengthOrPercentageNumericValue
 import com.varabyte.kobweb.compose.css.Cursor
@@ -76,10 +78,10 @@ fun BSNavBar(
                 }
             }
     ) {
-        Div(
-            attrs = Modifier
+        BSContainer(
+            behavior = ContainerBehavior.Fluid,
+            modifier = Modifier
                 .padding(leftRight = horizontalPadding)
-                .classNames("container-fluid").toAttrs()
         ) {
             if (brand != null) {
                 A(
